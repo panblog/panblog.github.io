@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="github,hexo,next," />
+  <meta name="keywords" content="R," />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="心里一直想着搭建一个GitHub的博客，或许这才更有bigger。会逐渐将之前WordPress的内容搬迁至此。心有所想，必有所成，所以在此。Hello World!">
-<meta name="keywords" content="github,hexo,next">
+<meta name="description" content="Basic R commands on vector operation">
+<meta name="keywords" content="R">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://panblog.cn/2017/05/hello-world/index.html">
+<meta property="og:title" content="R programming - vector">
+<meta property="og:url" content="http://panblog.cn/2017/05/r-programming-vector/index.html">
 <meta property="og:site_name" content="PANBLOG">
-<meta property="og:description" content="心里一直想着搭建一个GitHub的博客，或许这才更有bigger。会逐渐将之前WordPress的内容搬迁至此。心有所想，必有所成，所以在此。Hello World!">
-<meta property="og:updated_time" content="2017-05-19T16:00:00.000Z">
+<meta property="og:description" content="Basic R commands on vector operation">
+<meta property="og:updated_time" content="2017-05-20T16:52:04.469Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="心里一直想着搭建一个GitHub的博客，或许这才更有bigger。会逐渐将之前WordPress的内容搬迁至此。心有所想，必有所成，所以在此。Hello World!">
+<meta name="twitter:title" content="R programming - vector">
+<meta name="twitter:description" content="Basic R commands on vector operation">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://panblog.cn/2017/05/hello-world/"/>
+  <link rel="canonical" href="http://panblog.cn/2017/05/r-programming-vector/"/>
 
 
 
 
 
-  <title> Hello World | PANBLOG </title>
+  <title> R programming - vector | PANBLOG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -314,7 +314,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://panblog.cn/2017/05/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://panblog.cn/2017/05/r-programming-vector/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pan">
@@ -335,7 +335,7 @@
             
             
               
-                Hello World
+                R programming - vector
               
             
           </h1>
@@ -350,8 +350,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-19T00:00:00+08:00">
-                2017-05-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-18T01:00:00+08:00">
+                2017-05-18
               </time>
             
 
@@ -373,8 +373,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/GitHub/" itemprop="url" rel="index">
-                    <span itemprop="name">GitHub</span>
+                  <a href="/categories/Programming/" itemprop="url" rel="index">
+                    <span itemprop="name">Programming</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/R/" itemprop="url" rel="index">
+                    <span itemprop="name">R</span>
                   </a>
                 </span>
 
@@ -391,9 +402,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/05/hello-world/#comments" itemprop="discussionUrl">
+                <a href="/2017/05/r-programming-vector/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/05/hello-world/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/05/r-programming-vector/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -419,17 +430,15 @@
       
 
       
-        <p>心里一直想着搭建一个GitHub的博客，或许这才更有bigger。会逐渐将之前WordPress的内容搬迁至此。心有所想，必有所成，所以在此。Hello World!</p>
+        <p>Basic R commands on vector operation</p>
 <a id="more"></a>
-<h1 id="开始使用HEXO"><a href="#开始使用HEXO" class="headerlink" title="开始使用HEXO"></a>开始使用HEXO</h1><h2 id="常用的HEXO命令"><a href="#常用的HEXO命令" class="headerlink" title="常用的HEXO命令"></a>常用的HEXO命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"postName"</span> <span class="comment">#新建文章</span></div><div class="line">$ hexo new page <span class="string">"pageName"</span> <span class="comment">#新建页面</span></div><div class="line">$ hexo generate <span class="comment">#生成静态页面至public目录</span></div><div class="line">$ hexo server <span class="comment">#开启预览访问端口（默认端口4000，'ctrl + c'关闭server）</span></div><div class="line">$ hexo deploy <span class="comment">#将.deploy目录部署到GitHub</span></div><div class="line">$ hexo <span class="built_in">help</span>  <span class="comment"># 查看帮助</span></div><div class="line">$ hexo version  <span class="comment">#查看Hexo的版本</span></div><div class="line">$ hexo deploy -g  <span class="comment">#生成加部署</span></div><div class="line">$ hexo server -g  <span class="comment">#生成加预览</span></div><div class="line"></div><div class="line"><span class="comment">#命令的简写</span></div><div class="line">hexo n == hexo new</div><div class="line">hexo g == hexo generate</div><div class="line">hexo s == hexo server</div><div class="line">hexo d == hexo deploy</div></pre></td></tr></table></figure>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Quick deploy</span></div><div class="line">$ hexo s <span class="comment">#server, run server</span></div><div class="line">$ hexo c <span class="comment">#clean</span></div><div class="line">$ hexo g <span class="comment">#generate, generate static files</span></div><div class="line">$ hexo d <span class="comment">#deploy, deploy to remote sites</span></div><div class="line"></div><div class="line"><span class="comment"># Create a new ...</span></div><div class="line">$ hexo new <span class="string">"My New Post"</span> <span class="comment">#new post</span></div><div class="line">$ hexo new draft <span class="string">"new draft"</span> <span class="comment">#new draft, namely private post</span></div><div class="line">$ hexo new page <span class="string">"My New Page"</span> <span class="comment">#new page, like $ hexo new page tags</span></div></pre></td></tr></table></figure>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
-<li><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">Next使用文档</a></li>
-<li><a href="https://xuanwo.org/2015/03/26/hexo-intor/" target="_blank" rel="external">史上最详细的Hexo博客搭建图文教程</a></li>
-<li><a href="https://my.oschina.net/ryaneLee/blog/638440" target="_blank" rel="external">Github Pages和Hexo简明教程</a></li>
-<li><a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">Hexo Theme Center</a></li>
-</ul>
-
+<h1 id="Numeric-vector"><a href="#Numeric-vector" class="headerlink" title="Numeric vector"></a>Numeric vector</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">num_vect &lt;- c(<span class="number">0.5</span>, <span class="number">55</span>, -<span class="number">10</span>, <span class="number">6</span>)</div><div class="line">tf &lt;- num_vect &lt; <span class="number">1</span></div><div class="line"> </div><div class="line">&gt; tf</div><div class="line">[<span class="number">1</span>]  <span class="literal">TRUE</span> <span class="literal">FALSE</span>  <span class="literal">TRUE</span> <span class="literal">FALSE</span></div><div class="line"> </div><div class="line">A | B <span class="comment">#Logic OR</span></div><div class="line">A &amp; B <span class="comment">#Logic AND</span></div><div class="line">!A <span class="comment">#Logic Negation</span></div></pre></td></tr></table></figure>
+<h1 id="Character-vector"><a href="#Character-vector" class="headerlink" title="Character vector"></a>Character vector</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt; x &lt;- c(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>)</div><div class="line">&gt; y &lt;- c(<span class="string">"w"</span>, <span class="string">"x"</span>, <span class="string">"y"</span>, <span class="string">"z"</span>)</div><div class="line">&gt; paste(x, y)</div><div class="line">[<span class="number">1</span>] <span class="string">"a w"</span> <span class="string">"b x"</span> <span class="string">"c y"</span> <span class="string">"d z"</span></div><div class="line">&gt; paste(x, y, sep=<span class="string">"%%"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"a%%w"</span> <span class="string">"b%%x"</span> <span class="string">"c%%y"</span> <span class="string">"d%%z"</span></div><div class="line">&gt; paste(x, y, sep=<span class="string">"%%"</span>, collapse=<span class="string">","</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"a%%w,b%%x,c%%y,d%%z"</span></div><div class="line">&gt; paste(x, y, sep=<span class="string">","</span>, collapse=<span class="string">"%%"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"a,w%%b,x%%c,y%%d,z"</span></div><div class="line"><span class="comment"># we used the paste() function to collapse the elements of a single character vector</span></div><div class="line"><span class="comment"># paste() can also be used to join the elements of multiple character vectors.</span></div></pre></td></tr></table></figure>
+<h1 id="Missing-Value"><a href="#Missing-Value" class="headerlink" title="Missing Value"></a>Missing Value</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&gt; x&lt;-c(<span class="number">44</span>,<span class="literal">NA</span>,<span class="number">5</span>,<span class="literal">NA</span>)</div><div class="line"> </div><div class="line">&gt; x*<span class="number">3</span></div><div class="line">[<span class="number">1</span>] <span class="number">132</span>  <span class="literal">NA</span>  <span class="number">15</span>  <span class="literal">NA</span></div><div class="line"> </div><div class="line">&gt; y&lt;-rnorm(<span class="number">1000</span>)</div><div class="line">&gt; z&lt;-rep(<span class="literal">NA</span>,<span class="number">1000</span>)</div><div class="line">&gt; my_data&lt;-sample(c(y,z),<span class="number">100</span>)</div><div class="line">&gt; my_na&lt;-is.na(my_data)</div><div class="line"> </div><div class="line">&gt; sum(my_na)</div><div class="line">[<span class="number">1</span>] <span class="number">42</span> </div><div class="line"><span class="comment"># R represents TRUE as the number 1 and FALSE as the number 0. </span></div><div class="line"><span class="comment">#Therefore, if we take the sum of a bunch of TRUEs and FALSEs, we get the total number of TRUEs.</span></div><div class="line"> </div><div class="line">&gt; <span class="number">0</span>/<span class="number">0</span></div><div class="line">[<span class="number">1</span>] <span class="literal">NaN</span></div><div class="line"> </div><div class="line">&gt; <span class="literal">Inf</span>-<span class="literal">Inf</span></div><div class="line">[<span class="number">1</span>] <span class="literal">NaN</span></div><div class="line"> </div><div class="line"><span class="comment">#NA stands for Not Available</span></div><div class="line"><span class="comment">#NAN stands for Not A Number</span></div></pre></td></tr></table></figure>
+<h1 id="Logical-vectors"><a href="#Logical-vectors" class="headerlink" title="Logical vectors"></a>Logical vectors</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">x[is.na(x)] <span class="comment">#A vector of all NAs</span></div><div class="line">y&lt;-x[!is.na(x)] <span class="comment">#to create a vector called y that contains all of the non-NA values from x</span></div><div class="line">y[y &gt; <span class="number">0</span>] <span class="comment">#A vector of all the positive elements of y</span></div><div class="line">x[!is.na(x) &amp; x &gt; <span class="number">0</span>] <span class="comment"># as same as y[y &gt; 0]</span></div></pre></td></tr></table></figure>
+<h1 id="Vectors-of-positive-integers"><a href="#Vectors-of-positive-integers" class="headerlink" title="Vectors of positive integers"></a>Vectors of positive integers</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">x[<span class="number">1</span>:<span class="number">10</span>]</div><div class="line">x[c(<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>)]</div><div class="line"> </div><div class="line">&gt; x[<span class="number">0</span>]</div><div class="line">numeric(<span class="number">0</span>)</div><div class="line"> </div><div class="line">&gt; x[<span class="number">3000</span>]</div><div class="line">[<span class="number">1</span>] <span class="literal">NA</span></div><div class="line"> </div><div class="line"><span class="comment"># Many programming languages use what's called 'zero-based indexing', which means that the first element of a vector is considered element 0.</span></div><div class="line"><span class="comment"># R uses 'one-based indexing', which means the first element of a vector is considered element 1.</span></div></pre></td></tr></table></figure>
+<h1 id="Vectors-of-negative-integers"><a href="#Vectors-of-negative-integers" class="headerlink" title="Vectors of negative integers"></a>Vectors of negative integers</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">x[c(-<span class="number">2</span>,-<span class="number">10</span>)]</div><div class="line">x[-c(<span class="number">2</span>, <span class="number">10</span>)]</div><div class="line"><span class="comment">#Gives us all elements of x EXCEPT for the 2nd and 10 elements</span></div></pre></td></tr></table></figure>
+<h1 id="Vectors-of-character-strings"><a href="#Vectors-of-character-strings" class="headerlink" title="Vectors of character strings"></a>Vectors of character strings</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">vect &lt;- c(foo = <span class="number">11</span>, bar = <span class="number">2</span>, norf = <span class="literal">NA</span>)</div><div class="line"> </div><div class="line">&gt; vect</div><div class="line"> foo  bar norf </div><div class="line">  <span class="number">11</span>    <span class="number">2</span>   <span class="literal">NA</span> </div><div class="line"> </div><div class="line">&gt; names(vect)</div><div class="line">[<span class="number">1</span>] <span class="string">"foo"</span>  <span class="string">"bar"</span>  <span class="string">"norf"</span></div><div class="line"><span class="comment">#get the names of vect</span></div><div class="line"> </div><div class="line">vect2&lt;-c(<span class="number">11</span>,<span class="number">2</span>,<span class="literal">NA</span>)</div><div class="line">names(vect2)&lt;-c(<span class="string">"foo"</span>, <span class="string">"bar"</span>,<span class="string">"norf"</span>)</div><div class="line"><span class="comment">#add the `names` attribute to vect2</span></div><div class="line"> </div><div class="line">&gt; identical(vect, vect2)</div><div class="line">[<span class="number">1</span>] <span class="literal">TRUE</span></div><div class="line"><span class="comment">#check that vect and vect2 are the same</span></div><div class="line"> </div><div class="line">&gt; vect[<span class="string">"bar"</span>]</div><div class="line">bar </div><div class="line">  <span class="number">2</span> </div><div class="line">&gt; vect[c(<span class="string">"foo"</span>,<span class="string">"bar"</span>)]</div><div class="line">foo bar </div><div class="line"> <span class="number">11</span>   <span class="number">2</span></div></pre></td></tr></table></figure>
       
     </div>
 
@@ -458,11 +467,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/github/" rel="tag"># github</a>
-          
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
-          
-            <a href="/tags/next/" rel="tag"># next</a>
+            <a href="/tags/R/" rel="tag"># R</a>
           
         </div>
       
@@ -475,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/r-programming-vector/" rel="next" title="R programming - vector">
-                <i class="fa fa-chevron-left"></i> R programming - vector
+              <a href="/2017/05/r-programming-sequences-of-numbers/" rel="next" title="R programming - sequences of numbers">
+                <i class="fa fa-chevron-left"></i> R programming - sequences of numbers
               </a>
             
           </div>
@@ -485,8 +490,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/tips-to-optimize-a-hexo-theme/" rel="prev" title="Tips to optimize a hexo theme">
-                Tips to optimize a hexo theme <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -668,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开始使用HEXO"><span class="nav-number">1.</span> <span class="nav-text">开始使用HEXO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的HEXO命令"><span class="nav-number">1.1.</span> <span class="nav-text">常用的HEXO命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.2.</span> <span class="nav-text">Quick Start</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Numeric-vector"><span class="nav-number">1.</span> <span class="nav-text">Numeric vector</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Character-vector"><span class="nav-number">2.</span> <span class="nav-text">Character vector</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Missing-Value"><span class="nav-number">3.</span> <span class="nav-text">Missing Value</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Logical-vectors"><span class="nav-number">4.</span> <span class="nav-text">Logical vectors</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vectors-of-positive-integers"><span class="nav-number">5.</span> <span class="nav-text">Vectors of positive integers</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vectors-of-negative-integers"><span class="nav-number">6.</span> <span class="nav-text">Vectors of negative integers</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vectors-of-character-strings"><span class="nav-number">7.</span> <span class="nav-text">Vectors of character strings</span></a></li></ol></div>
             
 
           </div>
@@ -811,9 +816,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://panblog.cn/2017/05/hello-world/';
-          this.page.identifier = '2017/05/hello-world/';
-          this.page.title = 'Hello World';
+          this.page.url = 'http://panblog.cn/2017/05/r-programming-vector/';
+          this.page.identifier = '2017/05/r-programming-vector/';
+          this.page.title = 'R programming - vector';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://panfanblog.disqus.com/embed.js';
