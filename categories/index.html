@@ -64,7 +64,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Monda:300,300italic,400,400italic,700,700italic|Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Pan Fan, Peter Pan, Panblog, SCM, Supply Chain" />
 
 
 
@@ -111,7 +111,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -183,7 +183,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Just a GitHub blog of Pan :)</p>
+        <p class="site-subtitle">Let the good happen :)</p>
       
   </div>
 
@@ -322,10 +322,10 @@
     
       <div class="category-all-page">
         <div class="category-all-title">
-            暂无分类
+            目前共计 1 个分类
         </div>
         <div class="category-all">
-          
+          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GitHub/">GitHub</a><span class="category-list-count">2</span></li></ul>
         </div>
       </div>
     
@@ -383,14 +383,32 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
@@ -403,7 +421,7 @@
               <span class="links-of-author-item">
                 <a href="https://www.zhihu.com/people/fanpancn/activities" target="_blank" title="知乎">
                   
-                    <i class="fa fa-fw fa-book"></i>
+                    <i class="fa fa-fw fa-binoculars"></i>
                   
                   知乎
                 </a>
@@ -425,15 +443,15 @@
             <ul class="links-of-blogroll-list">
               
                 <li class="links-of-blogroll-item">
-                  <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
                   <a href="http://www.scm-blog.com/" title="刘宝红专栏" target="_blank">刘宝红专栏</a>
                 </li>
               
                 <li class="links-of-blogroll-item">
                   <a href="http://www.photo.withqiuliang.com/" title="秋影随行" target="_blank">秋影随行</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
                 </li>
               
                 <li class="links-of-blogroll-item">
@@ -476,11 +494,19 @@
   &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user-o"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Pan</span>
 </div>
 
+
+<div class="powered-by">
+  Welcome to <a class="theme-link" href="http://panblog.cn">PanBlog</a>, a github blog of Pan :)
+</div>
+
+<div class="theme-info">
+  Theme - NexT
+</div>
 
 
         
@@ -492,6 +518,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
