@@ -1,0 +1,920 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Monda:300,300italic,400,400italic,700,700italic|Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="效率,成本,浪费,采购,供应商管理," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="SCM有两大怪：降不下来的库存，降不下来的成本。最近新转做SDE，所在的大部门是正儿八经的SCM，核心就是成本、成本、成本，对于后者的难题有了更直接的体会。">
+<meta name="keywords" content="效率,成本,浪费,采购,供应商管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="成本节约路线图">
+<meta property="og:url" content="http://panblog.cn/2015/08/bm-scm-roadmap-of-cost-saving/index.html">
+<meta property="og:site_name" content="PANBLOG">
+<meta property="og:description" content="SCM有两大怪：降不下来的库存，降不下来的成本。最近新转做SDE，所在的大部门是正儿八经的SCM，核心就是成本、成本、成本，对于后者的难题有了更直接的体会。">
+<meta property="og:image" content="http://panblog.cn/2015/08/bm-scm-roadmap-of-cost-saving/images/bob-liu-book.jpg">
+<meta property="og:updated_time" content="2017-04-27T16:00:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="成本节约路线图">
+<meta name="twitter:description" content="SCM有两大怪：降不下来的库存，降不下来的成本。最近新转做SDE，所在的大部门是正儿八经的SCM，核心就是成本、成本、成本，对于后者的难题有了更直接的体会。">
+<meta name="twitter:image" content="http://panblog.cn/2015/08/bm-scm-roadmap-of-cost-saving/images/bob-liu-book.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'FIASJ1V00X',
+      apiKey: 'dc367d28dcf9cc807cb1f651e5845795',
+      indexName: 'panblog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://panblog.cn/2015/08/bm-scm-roadmap-of-cost-saving/"/>
+
+
+
+
+
+  <title> 成本节约路线图 | PANBLOG </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?076048103484014510debad82a5c4349";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">PANBLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Let the good happen</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://panblog.cn/2015/08/bm-scm-roadmap-of-cost-saving/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PANBLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                成本节约路线图
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-19T00:00:00+08:00">
+                2015-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/管理笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">管理笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/管理笔记/供应链/" itemprop="url" rel="index">
+                    <span itemprop="name">供应链</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/08/bm-scm-roadmap-of-cost-saving/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/08/bm-scm-roadmap-of-cost-saving/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>SCM有两大怪：降不下来的库存，降不下来的成本。最近新转做SDE，所在的大部门是正儿八经的SCM，核心就是成本、成本、成本，对于后者的难题有了更直接的体会。</p>
+<a id="more"></a>
+<p>降价最直接的方法就是强行压价，比如<a href="http://scm-blog.com/2005/12/post.html" target="_blank" rel="external">洛佩兹的铁血压价</a>。这样做的优点是短平快，立竿见影。然而任何一件事情的取得都有代价，这也不例外。这样做的负面影响就是，降价是以消耗供应商的利益/关系为代价的，对于长远的供应链健康是有很坏影响的。犹如减肥，三天不喝水是最立竿见影的效果（没有之一），而这实际上减体重而并不是真正意义上的减肥。</p>
+<p>我是一向不喜欢依赖于砍价的。</p>
+<p>另外一个例子来自于刘宝红老师的文章<a href="http://scm-blog.com/2014/06/design-changes.html" target="_blank" rel="external">《好不容易等到设计变更》</a>。文中讲到了一个有意思的现象：原材料年年降价，但是产品设计稍微变更，零件只有微小调整（也许材料、工艺都没有变化），但是价格却上涨20%。供应商在连年年降后没有利润空间，但凡抓住合适的时机就将成本一次性涨足，颇有些“三年不开张，开张吃三年”的意思。这个现象背后的实质是，供应商管理如果太/只注重于谈判，则谈判的结果只能是利润转移，如果一直忽视被掩盖的问题，不解决问题，最后只能是一场零和博弈。</p>
+<hr>
+<h1 id="降低成本的4个主要思路"><a href="#降低成本的4个主要思路" class="headerlink" title="降低成本的4个主要思路"></a>降低成本的4个主要思路</h1><p>对于降成本，我们还需要更好的方法。从传统意义上来讲，降低成本有4个主要思路。</p>
+<h2 id="强行压价"><a href="#强行压价" class="headerlink" title="强行压价"></a>强行压价</h2><p>强行压价有很多种，如洛佩兹。</p>
+<p>保持供应商合理的利润空间。如果对方是小供应商，和你接口的就很有可能是老板本人。都说商人无利不起早，而这些年降就是直接从对方的钱包里拿钱，不急眼也得甩一张绿脸回来。行情不好时，对方打哈哈是不得已而为之的修养，一旦行情反转就可以体会“供应商是爷”了。如果对方是大供应商客户经理，反映不会像老板本人那么激烈，但我确实见过拒绝接单情况。老话说，不与民争利，让出该让的部分。</p>
+<h2 id="设计上的VAVE"><a href="#设计上的VAVE" class="headerlink" title="设计上的VAVE"></a>设计上的VAVE</h2><p>80%的成本是由设计决定的，但设计人员不一定真正了解其实际应用场景，以及设计的可制造性。产品上的过度设计其实是降低成本的最大机会，这也是设计上VAVE的核心目标。</p>
+<h2 id="流程上的Lean"><a href="#流程上的Lean" class="headerlink" title="流程上的Lean"></a>流程上的Lean</h2><p>无论是CI还是6-sigma还是精益，核心都是消除过程上的浪费。在向供应商砍价之前，需要问一下是否已经对于八大浪费有了足够的分析与改善？</p>
+<p>另外一个需要注意的是，流程上的Lean应该着眼于双方共同合作效率的提升。Cost Saving是压在每一个供应链人头上的一座大山，而大部分人的解决思路是降价。实际上，成本是效率的反面，效率提升则成本下降，成本高企往往代表着背后的低效，这就是为什么VAVE和SDE工作的重要性。在拿起听筒打给供应商谈降价之前，自己有很多可以从效率上提升的方面，供应商业务量分配是否合理，配送网络是否高效，库存策略是否得当，这些问题是否得到妥当解决直接影响到效率与成本本身。最后，成本只是谈判的最后一步，之前有质量、交期、服务等先行条件，因小失大得不偿失。</p>
+<h2 id="供应商的Resourcing"><a href="#供应商的Resourcing" class="headerlink" title="供应商的Resourcing"></a>供应商的Resourcing</h2><p>我们是不是找到了对的供应商？对于过度竞争的产品，我们对供应商的规模效应配合得是否足够好？对于缺乏竞争的产品，是否已经引入了鲶鱼供应商？供应商的Resourcing的核心目的在于对于特定的产品，拿到我们在市场上公允的价格。</p>
+<h2 id="来自于“数据分析”的一点警惕"><a href="#来自于“数据分析”的一点警惕" class="headerlink" title="来自于“数据分析”的一点警惕"></a>来自于“数据分析”的一点警惕</h2><p>这是一个言必称数据的年代，决策和行动都受数据驱使。但不得不说，不了解运营而单纯数据推动得来的决策，决策质量有如rubbish。我经常被财务挑战，因为saving的解释，因为成本上升的解释，因为库存的解释。当解释到一半，总会听到类似的疑问“你说你做了很多改善，为什么从财务数字上体现不出来？”这种疑问不能说错，但是是非常典型的线性思维，行动必然导致结果，且结果立竿见影，简而言之“现世报”，美国企业尤甚。数字重要，但是背后起作用的逻辑更为重要。</p>
+<p>如刘宝红老师所言，不管是哪种方法，只有通过真正地消除成本的发生，才能达到真正降低成本的目的。</p>
+<hr>
+<blockquote>
+<p>2017/4/28更新。今天收到了刘宝红老师的新书，很高兴看到自己的观点也被出版了。这种感觉就像自己出书了一样。唯一遗憾的是，忘记在Title上加“资深”二字了。哈哈！</p>
+</blockquote>
+<p><img src="images/bob-liu-book.jpg" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/效率/" rel="tag"># 效率</a>
+          
+            <a href="/tags/成本/" rel="tag"># 成本</a>
+          
+            <a href="/tags/浪费/" rel="tag"># 浪费</a>
+          
+            <a href="/tags/采购/" rel="tag"># 采购</a>
+          
+            <a href="/tags/供应商管理/" rel="tag"># 供应商管理</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/poem-shan-shan/" rel="next" title="山">
+                <i class="fa fa-chevron-left"></i> 山
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/poem-denglushan-yishan/" rel="prev" title="登庐山">
+                登庐山 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Pan" />
+          <p class="site-author-name" itemprop="name">Pan</p>
+           
+              <p class="site-description motion-element" itemprop="description">供应链人</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fanpancn/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-binoculars"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.scm-blog.com/" title="刘宝红专栏" target="_blank">刘宝红专栏</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.photo.withqiuliang.com/" title="秋影随行" target="_blank">秋影随行</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wiz.cn/" title="为知笔记" target="_blank">为知笔记</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://itellyou.cn/" title="I Tell You" target="_blank">I Tell You</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io/icons/" title="FontAwesome" target="_blank">FontAwesome</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#降低成本的4个主要思路"><span class="nav-number">1.</span> <span class="nav-text">降低成本的4个主要思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#强行压价"><span class="nav-number">1.1.</span> <span class="nav-text">强行压价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计上的VAVE"><span class="nav-number">1.2.</span> <span class="nav-text">设计上的VAVE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程上的Lean"><span class="nav-number">1.3.</span> <span class="nav-text">流程上的Lean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#供应商的Resourcing"><span class="nav-number">1.4.</span> <span class="nav-text">供应商的Resourcing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#来自于“数据分析”的一点警惕"><span class="nav-number">1.5.</span> <span class="nav-text">来自于“数据分析”的一点警惕</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pan</span>
+</div>
+
+
+<div class="powered-by">
+  Welcome to <a class="theme-link" href="http://panblog.cn">PanBlog</a>, a github blog of Pan :)
+</div>
+
+<div class="theme-info">
+  Theme - NexT
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://panfanblog.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://panblog.cn/2015/08/bm-scm-roadmap-of-cost-saving/';
+          this.page.identifier = '2015/08/bm-scm-roadmap-of-cost-saving/';
+          this.page.title = '成本节约路线图';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://panfanblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
