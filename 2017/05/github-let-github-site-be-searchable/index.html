@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://www.panblog.cn/2017/05/github-let-github-site-be-searchable/index.html">
 <meta property="og:site_name" content="PANBLOG">
 <meta property="og:description" content="之前的PanBlog都是拒绝搜索引擎的。但是由于种种原因，开始考虑允许搜索引擎抓取，所以今天在捣鼓Google和Baidu检索。有意思的是，现在想使用搜索引擎了，但百度仍然无法读取数据，因为GitHub单方面拒绝了百度，OMG。 先简单介绍一下通常的检索后台设置，再单独说一下如何解决百度检索问题（有彩蛋）。">
-<meta property="og:updated_time" content="2017-05-22T15:48:51.670Z">
+<meta property="og:updated_time" content="2017-05-22T22:50:52.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何让搜索引擎检索GitHub网站">
 <meta name="twitter:description" content="之前的PanBlog都是拒绝搜索引擎的。但是由于种种原因，开始考虑允许搜索引擎抓取，所以今天在捣鼓Google和Baidu检索。有意思的是，现在想使用搜索引擎了，但百度仍然无法读取数据，因为GitHub单方面拒绝了百度，OMG。 先简单介绍一下通常的检索后台设置，再单独说一下如何解决百度检索问题（有彩蛋）。">
@@ -376,8 +376,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-05-22T23:48:51+08:00">
-                2017-05-22
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-23T06:50:52+08:00">
+                2017-05-23
               </time>
             
           </span>
@@ -466,7 +466,7 @@
 <li><p>在git bash中输入以下命令安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-sitemap --save</div><div class="line">npm install hexo-generator-baidu-sitemap --save</div></pre></td></tr></table></figure>
 </li>
-<li><p>在网站配置文件<code>_config.yml</code>中添加如下代码，然后重新部署</p>
+<li><p>在网站配置文件<code>_config.yml</code>中添加如下代码(我不加也可以)，然后重新部署</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 自动生成sitemap</span></div><div class="line">sitemap:</div><div class="line">path: sitemap.xml</div><div class="line">baidusitemap:</div><div class="line">path: baidusitemap.xml</div></pre></td></tr></table></figure>
 </li>
 <li><p>在刚刚的网站中，验证网站地图<br>谷歌验证<code>http://yoursite/sitemap.xml</code>文件<br>百度验证<code>http://yoursite/baidusitemap.xml</code>文件</p>
@@ -477,8 +477,8 @@
 <blockquote>
 <p>我们知道cdn能缓存静态资源，如果我们利用cdn制作我们的镜像网站，再将百度索引的解析cdn上，那么爬虫就不会访问github服务器了，而是访问cdn缓存服务器。</p>
 </blockquote>
-<p>具体方法请见<a href="http://www.tuicool.com/articles/ZnMjArZ" target="_blank" rel="external">另外一篇文章</a>。</p>
-<p>然而遗憾的是，百度的抓取诊断一直是“抓取诊断”，仍未成功，一怒之下就把百度地图文件卸载了！。这就是那个彩蛋。。 :(</p>
+<p>具体操作方法请见<a href="http://www.tuicool.com/articles/ZnMjArZ" target="_blank" rel="external">另外一篇文章</a>，可操作性很强。</p>
+<p>然而。遗憾的是，百度的抓取诊断一直是“抓取诊断”，仍未成功，一怒之下就把百度地图文件卸载了！。这就是那个彩蛋。。 :(</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm uninstall hexo-generator-baidu-sitemap --save</div></pre></td></tr></table></figure>
 <hr>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
@@ -530,8 +530,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/r-programming-matrix-dataframe/" rel="next" title="R programming - matrix and data frame">
-                <i class="fa fa-chevron-left"></i> R programming - matrix and data frame
+              <a href="/2017/05/tips-to-optimize-a-hexo-theme/" rel="next" title="自定义hexo NexT主题">
+                <i class="fa fa-chevron-left"></i> 自定义hexo NexT主题
               </a>
             
           </div>
@@ -539,6 +539,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/r-programming-matrix-dataframe/" rel="prev" title="R programming - matrix and data frame">
+                R programming - matrix and data frame <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
