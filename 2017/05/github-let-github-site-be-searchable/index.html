@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://www.panblog.cn/2017/05/github-let-github-site-be-searchable/index.html">
 <meta property="og:site_name" content="PANBLOG">
 <meta property="og:description" content="之前的PanBlog都是拒绝搜索引擎的。但是由于种种原因，开始考虑允许搜索引擎抓取，所以今天在捣鼓Google和Baidu检索。有意思的是，现在想使用搜索引擎了，但百度仍然无法读取数据，因为GitHub单方面拒绝了百度，OMG。 先简单介绍一下通常的检索后台设置，再单独说一下如何解决百度检索问题（有彩蛋）。">
-<meta property="og:updated_time" content="2017-05-22T15:39:09.217Z">
+<meta property="og:updated_time" content="2017-05-22T15:48:51.670Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何让搜索引擎检索GitHub网站">
 <meta name="twitter:description" content="之前的PanBlog都是拒绝搜索引擎的。但是由于种种原因，开始考虑允许搜索引擎抓取，所以今天在捣鼓Google和Baidu检索。有意思的是，现在想使用搜索引擎了，但百度仍然无法读取数据，因为GitHub单方面拒绝了百度，OMG。 先简单介绍一下通常的检索后台设置，再单独说一下如何解决百度检索问题（有彩蛋）。">
@@ -376,7 +376,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-05-22T23:39:09+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-22T23:48:51+08:00">
                 2017-05-22
               </time>
             
@@ -473,12 +473,12 @@
 </li>
 </ol>
 <hr>
-<h1 id="让百度检索你的GItHub站点"><a href="#让百度检索你的GItHub站点" class="headerlink" title="让百度检索你的GItHub站点"></a>让百度检索你的GItHub站点</h1><p>GitHub是拒绝百度爬虫的，原因简单地来说，就是百度爬虫爬得太猛烈，已经对很多 Github 用户造成了可用性的问题了，详见<a href="http://jerryzou.com/posts/feasibility-of-allowing-baiduSpider-for-Github-Pages/" target="_blank" rel="external">这一篇文章</a>。这个问题的解决思路是：</p>
+<h1 id="让百度检索你的GitHub站点"><a href="#让百度检索你的GitHub站点" class="headerlink" title="让百度检索你的GitHub站点"></a>让百度检索你的GitHub站点</h1><p>GitHub是拒绝百度爬虫的，原因简单地来说，就是百度爬虫爬得太猛烈，已经对很多 Github 用户造成了可用性的问题了，详见<a href="http://jerryzou.com/posts/feasibility-of-allowing-baiduSpider-for-Github-Pages/" target="_blank" rel="external">这一篇文章</a>。这个问题的解决思路是：</p>
 <blockquote>
 <p>我们知道cdn能缓存静态资源，如果我们利用cdn制作我们的镜像网站，再将百度索引的解析cdn上，那么爬虫就不会访问github服务器了，而是访问cdn缓存服务器。</p>
 </blockquote>
 <p>具体方法请见<a href="http://www.tuicool.com/articles/ZnMjArZ" target="_blank" rel="external">另外一篇文章</a>。</p>
-<p>然而遗憾的是，百度的抓取诊断一直是“抓取诊断”，仍未成功。这就是那个彩蛋。。 :(一怒之下就把百度地图文件卸载了！</p>
+<p>然而遗憾的是，百度的抓取诊断一直是“抓取诊断”，仍未成功，一怒之下就把百度地图文件卸载了！。这就是那个彩蛋。。 :(</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm uninstall hexo-generator-baidu-sitemap --save</div></pre></td></tr></table></figure>
 <hr>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
@@ -723,7 +723,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#检索设置的一般步骤"><span class="nav-number">1.</span> <span class="nav-text">检索设置的一般步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#验证网站"><span class="nav-number">1.1.</span> <span class="nav-text">验证网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加网站地图"><span class="nav-number">1.2.</span> <span class="nav-text">添加网站地图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#让百度检索你的GItHub站点"><span class="nav-number">2.</span> <span class="nav-text">让百度检索你的GItHub站点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#检索设置的一般步骤"><span class="nav-number">1.</span> <span class="nav-text">检索设置的一般步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#验证网站"><span class="nav-number">1.1.</span> <span class="nav-text">验证网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加网站地图"><span class="nav-number">1.2.</span> <span class="nav-text">添加网站地图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#让百度检索你的GitHub站点"><span class="nav-number">2.</span> <span class="nav-text">让百度检索你的GitHub站点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
