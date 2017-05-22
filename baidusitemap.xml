@@ -3,6 +3,58 @@
 
 
     
+  <url>
+    <loc>http://www.panblog.cn/2017/05/github-let-github-site-be-searchable/</loc>
+    <lastmod>2017-05-22T14:38:42.284Z</lastmod>
+    <data>
+        <display>
+        <title>如何让搜索引擎检索GitHub网站</title>
+        <pubTime>2017-05-21T16:00:00.000Z</pubTime>
+        
+        <tag>github</tag>
+         
+        <tag>search engine</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://www.panblog.cn/categories/Programming/"/>
+          
+             
+              <breadCrumb title="GitHub" url="http://www.panblog.cn/categories/Programming/GitHub/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.panblog.cn/2017/05/tips-to-optimize-a-hexo-theme/</loc>
+    <lastmod>2017-05-22T14:12:53.362Z</lastmod>
+    <data>
+        <display>
+        <title>自定义hexo NexT主题</title>
+        <pubTime>2017-05-20T00:51:14.000Z</pubTime>
+        
+        <tag>github</tag>
+         
+        <tag>hexo</tag>
+         
+        <tag>next</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://www.panblog.cn/categories/Programming/"/>
+          
+             
+              <breadCrumb title="GitHub" url="http://www.panblog.cn/categories/Programming/GitHub/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
     
     
@@ -31,33 +83,6 @@
     
     
     
-    
-  <url>
-    <loc>http://www.panblog.cn/2017/05/tips-to-optimize-a-hexo-theme/</loc>
-    <lastmod>2017-05-21T04:45:41.399Z</lastmod>
-    <data>
-        <display>
-        <title>自定义hexo NexT主题</title>
-        <pubTime>2017-05-20T00:51:14.000Z</pubTime>
-        
-        <tag>github</tag>
-         
-        <tag>hexo</tag>
-         
-        <tag>next</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://www.panblog.cn/categories/Programming/"/>
-          
-             
-              <breadCrumb title="GitHub" url="http://www.panblog.cn/categories/Programming/GitHub/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://www.panblog.cn/2017/03/value-family-motto/</loc>
