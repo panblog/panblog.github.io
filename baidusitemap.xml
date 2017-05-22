@@ -4,6 +4,31 @@
 
     
   <url>
+    <loc>http://www.panblog.cn/2016/12/bm-scm-guide-of-eo-disposition/</loc>
+    <lastmod>2017-05-22T22:33:52.722Z</lastmod>
+    <data>
+        <display>
+        <title>E and O的一般处理思路</title>
+        <pubTime>2016-12-14T16:00:00.000Z</pubTime>
+        
+        <tag>库存</tag>
+         
+        <tag>E&amp;O</tag>
+         
+         
+           
+             
+              <breadCrumb title="管理笔记" url="http://www.panblog.cn/categories/%E7%AE%A1%E7%90%86%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="供应链" url="http://www.panblog.cn/categories/%E7%AE%A1%E7%90%86%E7%AC%94%E8%AE%B0/%E4%BE%9B%E5%BA%94%E9%93%BE/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.panblog.cn/2017/05/github-let-github-site-be-searchable/</loc>
     <lastmod>2017-05-22T15:48:51.670Z</lastmod>
     <data>
@@ -429,31 +454,6 @@
 
     
   <url>
-    <loc>http://www.panblog.cn/2016/12/bm-scm-guide-of-eo-disposition/</loc>
-    <lastmod>2017-05-21T01:57:50.872Z</lastmod>
-    <data>
-        <display>
-        <title>E&O的一般处理思路</title>
-        <pubTime>2016-12-14T16:00:00.000Z</pubTime>
-        
-        <tag>库存</tag>
-         
-        <tag>E&amp;O</tag>
-         
-         
-           
-             
-              <breadCrumb title="管理笔记" url="http://www.panblog.cn/categories/%E7%AE%A1%E7%90%86%E7%AC%94%E8%AE%B0/"/>
-          
-             
-              <breadCrumb title="供应链" url="http://www.panblog.cn/categories/%E7%AE%A1%E7%90%86%E7%AC%94%E8%AE%B0/%E4%BE%9B%E5%BA%94%E9%93%BE/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.panblog.cn/2016/11/bm-scm-inventory-abc-analysis/</loc>
     <lastmod>2017-05-21T01:57:38.635Z</lastmod>
     <data>
@@ -508,9 +508,9 @@
         <title>留侯论（节选）</title>
         <pubTime>2017-02-20T16:00:00.000Z</pubTime>
         
-        <tag>苏轼</tag>
-         
         <tag>古文</tag>
+         
+        <tag>苏轼</tag>
          
          
            
