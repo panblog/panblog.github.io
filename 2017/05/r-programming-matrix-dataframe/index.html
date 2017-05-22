@@ -96,13 +96,13 @@
 <meta name="description" content="Basic R commands on matrix operation">
 <meta name="keywords" content="R">
 <meta property="og:type" content="article">
-<meta property="og:title" content="R programming - matrix">
-<meta property="og:url" content="http://panblog.cn/2017/05/r-programming-matrix/index.html">
+<meta property="og:title" content="R programming - matrix &amp; data frame">
+<meta property="og:url" content="http://panblog.cn/2017/05/r-programming-matrix-dataframe/index.html">
 <meta property="og:site_name" content="PANBLOG">
 <meta property="og:description" content="Basic R commands on matrix operation">
-<meta property="og:updated_time" content="2017-05-22T08:54:21.521Z">
+<meta property="og:updated_time" content="2017-05-22T10:47:33.704Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="R programming - matrix">
+<meta name="twitter:title" content="R programming - matrix &amp; data frame">
 <meta name="twitter:description" content="Basic R commands on matrix operation">
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://panblog.cn/2017/05/r-programming-matrix/"/>
+  <link rel="canonical" href="http://panblog.cn/2017/05/r-programming-matrix-dataframe/"/>
 
 
 
 
 
-  <title> R programming - matrix | PANBLOG </title>
+  <title> R programming - matrix & data frame | PANBLOG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -334,7 +334,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://panblog.cn/2017/05/r-programming-matrix/">
+    <link itemprop="mainEntityOfPage" href="http://panblog.cn/2017/05/r-programming-matrix-dataframe/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pan">
@@ -355,7 +355,7 @@
             
             
               
-                R programming - matrix
+                R programming - matrix & data frame
               
             
           </h1>
@@ -386,7 +386,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-05-22T16:54:21+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-22T18:47:33+08:00">
                 2017-05-22
               </time>
             
@@ -434,9 +434,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/05/r-programming-matrix/#comments" itemprop="discussionUrl">
+                <a href="/2017/05/r-programming-matrix-dataframe/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/05/r-programming-matrix/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/05/r-programming-matrix-dataframe/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -463,20 +463,12 @@
 
       
         <p>Basic R commands on matrix operation</p>
-<a id="more"></a>
-<h1 id="Create-matrix"><a href="#Create-matrix" class="headerlink" title="Create matrix"></a>Create matrix</h1><blockquote>
-<p>my_vector &lt;- 1:20 </p>
-</blockquote>
-<h1 id="my-vector-is-a-vector-it-doesn’t-have-a-dim-attribute"><a href="#my-vector-is-a-vector-it-doesn’t-have-a-dim-attribute" class="headerlink" title="my_vector is a vector, it doesn’t have a dim attribute."></a>my_vector is a vector, it doesn’t have a <code>dim</code> attribute.</h1><h1 id="vector-has-length-attribute"><a href="#vector-has-length-attribute" class="headerlink" title="vector has length attribute"></a>vector has <code>length</code> attribute</h1><blockquote>
-<p>dim(my_vector)<br>NULL<br>length(my_vector)<br>[1] 20</p>
-</blockquote>
-<h1 id="convert-the-vector-to-matrix"><a href="#convert-the-vector-to-matrix" class="headerlink" title="convert the vector to matrix"></a>convert the vector to matrix</h1><blockquote>
-<p>dim(my_vector) &lt;- c(4, 5)</p>
-</blockquote>
-<h1 id="see-the-attribute-of-matrix"><a href="#see-the-attribute-of-matrix" class="headerlink" title="see the attribute of matrix"></a>see the attribute of matrix</h1><blockquote>
-<p>dim(my_vector)<br>[1] 4 5<br>attributes(my_vector)<br>$dim<br>[1] 4 5</p>
-</blockquote>
-<h1 id="create-a-matrix-directly-via-function-matrix"><a href="#create-a-matrix-directly-via-function-matrix" class="headerlink" title="create a matrix directly via function matrix()"></a>create a matrix directly via function matrix()</h1>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h1 id="Create-matrix"><a href="#Create-matrix" class="headerlink" title="Create matrix"></a>Create matrix</h1><h2 id="create-a-matrix-directly"><a href="#create-a-matrix-directly" class="headerlink" title="create a matrix directly"></a>create a matrix directly</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; my_matrix2 &lt;- matrix(<span class="number">1</span>:<span class="number">20</span>, <span class="number">4</span>, <span class="number">5</span>)</div><div class="line"></div><div class="line">&gt; identical(my_matrix, my_matrix2)</div><div class="line">[<span class="number">1</span>] <span class="literal">TRUE</span></div></pre></td></tr></table></figure>
+<h2 id="Create-matrix-from-vector"><a href="#Create-matrix-from-vector" class="headerlink" title="Create matrix from vector"></a>Create matrix from vector</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt; my_vector &lt;- <span class="number">1</span>:<span class="number">20</span> </div><div class="line"></div><div class="line"><span class="comment"># my_vector is a vector, it doesn't have a `dim` attribute.</span></div><div class="line"><span class="comment"># vector has `length` attribute</span></div><div class="line">&gt; dim(my_vector)</div><div class="line"><span class="literal">NULL</span></div><div class="line">&gt; length(my_vector)</div><div class="line">[<span class="number">1</span>] <span class="number">20</span></div><div class="line"></div><div class="line"><span class="comment"># convert the vector to matrix</span></div><div class="line">&gt; dim(my_vector) &lt;- c(<span class="number">4</span>, <span class="number">5</span>)</div><div class="line"></div><div class="line">&gt; class(my_vector)</div><div class="line">[<span class="number">1</span>] <span class="string">"matrix"</span></div></pre></td></tr></table></figure>
+<h2 id="see-the-attribute-of-matrix"><a href="#see-the-attribute-of-matrix" class="headerlink" title="see the attribute of matrix"></a>see the attribute of matrix</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; dim(my_vector)</div><div class="line">[<span class="number">1</span>] <span class="number">4</span> <span class="number">5</span></div><div class="line">&gt; attributes(my_vector)</div><div class="line">$dim</div><div class="line">[<span class="number">1</span>] <span class="number">4</span> <span class="number">5</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="Create-data-frame"><a href="#Create-data-frame" class="headerlink" title="Create data frame"></a>Create data frame</h1><h2 id="Convert-matrix-to-data-frame"><a href="#Convert-matrix-to-data-frame" class="headerlink" title="Convert matrix to data frame"></a>Convert matrix to data frame</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&gt; patients &lt;- c(<span class="string">"Bill"</span>, <span class="string">"Gina"</span>, <span class="string">"Kelly"</span>,  <span class="string">"Sean"</span>)</div><div class="line"></div><div class="line">&gt; cbind(patients, my_matrix)</div><div class="line">     patients                       </div><div class="line">[<span class="number">1</span>,] <span class="string">"Bill"</span>   <span class="string">"1"</span> <span class="string">"5"</span> <span class="string">"9"</span>  <span class="string">"13"</span> <span class="string">"17"</span></div><div class="line">[<span class="number">2</span>,] <span class="string">"Gina"</span>   <span class="string">"2"</span> <span class="string">"6"</span> <span class="string">"10"</span> <span class="string">"14"</span> <span class="string">"18"</span></div><div class="line">[<span class="number">3</span>,] <span class="string">"Kelly"</span>  <span class="string">"3"</span> <span class="string">"7"</span> <span class="string">"11"</span> <span class="string">"15"</span> <span class="string">"19"</span></div><div class="line">[<span class="number">4</span>,] <span class="string">"Sean"</span>   <span class="string">"4"</span> <span class="string">"8"</span> <span class="string">"12"</span> <span class="string">"16"</span> <span class="string">"20"</span></div><div class="line"><span class="comment"># variables are converted to string by 'implicit coercion'</span></div><div class="line"><span class="comment"># matrices can only contain ONE class of data.</span></div><div class="line"></div><div class="line">&gt; my_data &lt;- data.frame(patients, my_matrix)</div><div class="line">&gt; my_data</div><div class="line">  patients X1 X2 X3 X4 X5</div><div class="line"><span class="number">1</span>     Bill  <span class="number">1</span>  <span class="number">5</span>  <span class="number">9</span> <span class="number">13</span> <span class="number">17</span></div><div class="line"><span class="number">2</span>     Gina  <span class="number">2</span>  <span class="number">6</span> <span class="number">10</span> <span class="number">14</span> <span class="number">18</span></div><div class="line"><span class="number">3</span>    Kelly  <span class="number">3</span>  <span class="number">7</span> <span class="number">11</span> <span class="number">15</span> <span class="number">19</span></div><div class="line"><span class="number">4</span>     Sean  <span class="number">4</span>  <span class="number">8</span> <span class="number">12</span> <span class="number">16</span> <span class="number">20</span></div><div class="line"></div><div class="line">&gt; class(my_data)</div><div class="line">[<span class="number">1</span>] <span class="string">"data.frame"</span></div></pre></td></tr></table></figure>
+<h2 id="Add-row-column-name"><a href="#Add-row-column-name" class="headerlink" title="Add row/column name"></a>Add row/column name</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&gt; cnames &lt;- c(<span class="string">"patient"</span>, <span class="string">"age"</span>, <span class="string">"weight"</span>, <span class="string">"bp"</span>, <span class="string">"rating"</span>, <span class="string">"test"</span>)</div><div class="line">&gt; colnames(my_data) &lt;- cnames</div><div class="line">&gt; my_data</div><div class="line">  patient age weight bp rating test</div><div class="line"><span class="number">1</span>    Bill   <span class="number">1</span>      <span class="number">5</span>  <span class="number">9</span>     <span class="number">13</span>   <span class="number">17</span></div><div class="line"><span class="number">2</span>    Gina   <span class="number">2</span>      <span class="number">6</span> <span class="number">10</span>     <span class="number">14</span>   <span class="number">18</span></div><div class="line"><span class="number">3</span>   Kelly   <span class="number">3</span>      <span class="number">7</span> <span class="number">11</span>     <span class="number">15</span>   <span class="number">19</span></div><div class="line"><span class="number">4</span>    Sean   <span class="number">4</span>      <span class="number">8</span> <span class="number">12</span>     <span class="number">16</span>   <span class="number">20</span></div><div class="line"><span class="comment"># Pay attention, column `patient` is not the column name</span></div><div class="line"><span class="comment"># it's one column of this data frame</span></div><div class="line"></div><div class="line">&gt; my_rowname &lt;- c(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>,<span class="string">"d"</span>)</div><div class="line">&gt; rownames(my_data) &lt;-my_rowname</div><div class="line">&gt; my_data</div><div class="line">  patient age weight bp rating test</div><div class="line">a    Bill   <span class="number">1</span>      <span class="number">5</span>  <span class="number">9</span>     <span class="number">13</span>   <span class="number">17</span></div><div class="line">b    Gina   <span class="number">2</span>      <span class="number">6</span> <span class="number">10</span>     <span class="number">14</span>   <span class="number">18</span></div><div class="line">c   Kelly   <span class="number">3</span>      <span class="number">7</span> <span class="number">11</span>     <span class="number">15</span>   <span class="number">19</span></div><div class="line">d    Sean   <span class="number">4</span>      <span class="number">8</span> <span class="number">12</span>     <span class="number">16</span>   <span class="number">20</span></div></pre></td></tr></table></figure>
       
     </div>
 
@@ -707,7 +699,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-matrix"><span class="nav-number">1.</span> <span class="nav-text">Create matrix</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#my-vector-is-a-vector-it-doesn’t-have-a-dim-attribute"><span class="nav-number">2.</span> <span class="nav-text">my_vector is a vector, it doesn’t have a dim attribute.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vector-has-length-attribute"><span class="nav-number">3.</span> <span class="nav-text">vector has length attribute</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#convert-the-vector-to-matrix"><span class="nav-number">4.</span> <span class="nav-text">convert the vector to matrix</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#see-the-attribute-of-matrix"><span class="nav-number">5.</span> <span class="nav-text">see the attribute of matrix</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#create-a-matrix-directly-via-function-matrix"><span class="nav-number">6.</span> <span class="nav-text">create a matrix directly via function matrix()</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-matrix"><span class="nav-number"></span> <span class="nav-text">Create matrix</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#create-a-matrix-directly"><span class="nav-number">1.</span> <span class="nav-text">create a matrix directly</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-matrix-from-vector"><span class="nav-number">2.</span> <span class="nav-text">Create matrix from vector</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#see-the-attribute-of-matrix"><span class="nav-number">3.</span> <span class="nav-text">see the attribute of matrix</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-data-frame"><span class="nav-number"></span> <span class="nav-text">Create data frame</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Convert-matrix-to-data-frame"><span class="nav-number">1.</span> <span class="nav-text">Convert matrix to data frame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-row-column-name"><span class="nav-number">2.</span> <span class="nav-text">Add row/column name</span></a></li></ol></div>
             
 
           </div>
@@ -850,9 +842,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://panblog.cn/2017/05/r-programming-matrix/';
-          this.page.identifier = '2017/05/r-programming-matrix/';
-          this.page.title = 'R programming - matrix';
+          this.page.url = 'http://panblog.cn/2017/05/r-programming-matrix-dataframe/';
+          this.page.identifier = '2017/05/r-programming-matrix-dataframe/';
+          this.page.title = 'R programming - matrix & data frame';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://panfanblog.disqus.com/embed.js';

@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://panblog.cn/2017/05/r-programming-matrix/</loc>
+    <loc>http://panblog.cn/2017/05/r-programming-matrix-dataframe/</loc>
     
-    <lastmod>2017-05-22T08:54:21.521Z</lastmod>
+    <lastmod>2017-05-22T10:47:33.704Z</lastmod>
     
   </url>
   
@@ -12,13 +12,6 @@
     <loc>http://panblog.cn/about/index.html</loc>
     
     <lastmod>2017-05-22T02:54:05.243Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panblog.cn/googlef02212c541654c11.html</loc>
-    
-    <lastmod>2017-05-22T02:30:16.252Z</lastmod>
     
   </url>
   
