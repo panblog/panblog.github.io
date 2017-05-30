@@ -4,6 +4,75 @@
 
     
   <url>
+    <loc>http://panblog.cn/2017/05/r-programming-browse-data/</loc>
+    <lastmod>2017-05-30T14:11:04.851Z</lastmod>
+    <data>
+        <display>
+        <title>R programming - browse data</title>
+        <pubTime>2017-05-29T16:00:00.000Z</pubTime>
+        
+        <tag>R</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://panblog.cn/categories/Programming/"/>
+          
+             
+              <breadCrumb title="R" url="http://panblog.cn/categories/Programming/R/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://panblog.cn/2017/05/r-programming-matrix-dataframe/</loc>
+    <lastmod>2017-05-30T13:39:51.817Z</lastmod>
+    <data>
+        <display>
+        <title>R programming - matrix and data frame</title>
+        <pubTime>2017-05-21T16:00:00.000Z</pubTime>
+        
+        <tag>R</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://panblog.cn/categories/Programming/"/>
+          
+             
+              <breadCrumb title="R" url="http://panblog.cn/categories/Programming/R/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://panblog.cn/2017/05/r-programming-vector/</loc>
+    <lastmod>2017-05-30T00:42:48.735Z</lastmod>
+    <data>
+        <display>
+        <title>R programming - vector</title>
+        <pubTime>2017-05-17T17:00:00.000Z</pubTime>
+        
+        <tag>R</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://panblog.cn/categories/Programming/"/>
+          
+             
+              <breadCrumb title="R" url="http://panblog.cn/categories/Programming/R/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://panblog.cn/2017/05/r-programming-sequences-of-numbers/</loc>
     <lastmod>2017-05-29T02:34:50.123Z</lastmod>
     <data>
@@ -540,29 +609,6 @@
 
     
   <url>
-    <loc>http://panblog.cn/2017/05/r-programming-matrix-dataframe/</loc>
-    <lastmod>2017-05-22T15:14:40.637Z</lastmod>
-    <data>
-        <display>
-        <title>R programming - matrix and data frame</title>
-        <pubTime>2017-05-21T16:00:00.000Z</pubTime>
-        
-        <tag>R</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://panblog.cn/categories/Programming/"/>
-          
-             
-              <breadCrumb title="R" url="http://panblog.cn/categories/Programming/R/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://panblog.cn/2017/05/tips-to-optimize-a-hexo-theme/</loc>
     <lastmod>2017-05-22T14:12:53.362Z</lastmod>
     <data>
@@ -800,13 +846,13 @@
         <title>八大浪费</title>
         <pubTime>2015-12-22T16:00:00.000Z</pubTime>
         
-        <tag>供应商开发</tag>
-         
         <tag>效率</tag>
          
         <tag>成本</tag>
          
         <tag>浪费</tag>
+         
+        <tag>供应商开发</tag>
          
          
            
@@ -1041,29 +1087,6 @@
 
     
   <url>
-    <loc>http://panblog.cn/2017/05/r-programming-vector/</loc>
-    <lastmod>2017-05-20T16:52:04.469Z</lastmod>
-    <data>
-        <display>
-        <title>R programming - vector</title>
-        <pubTime>2017-05-17T17:00:00.000Z</pubTime>
-        
-        <tag>R</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://panblog.cn/categories/Programming/"/>
-          
-             
-              <breadCrumb title="R" url="http://panblog.cn/categories/Programming/R/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://panblog.cn/2017/05/hello-world/</loc>
     <lastmod>2017-05-19T16:00:00.000Z</lastmod>
     <data>
@@ -1098,15 +1121,15 @@
         <title>成本节约路线图</title>
         <pubTime>2015-08-18T16:00:00.000Z</pubTime>
         
+        <tag>采购</tag>
+         
+        <tag>供应商管理</tag>
+         
         <tag>效率</tag>
          
         <tag>成本</tag>
          
         <tag>浪费</tag>
-         
-        <tag>采购</tag>
-         
-        <tag>供应商管理</tag>
          
          
            

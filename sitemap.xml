@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panblog.cn/2017/05/r-programming-browse-data/</loc>
+    
+    <lastmod>2017-05-30T14:11:04.851Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panblog.cn/2017/05/r-programming-matrix-dataframe/</loc>
+    
+    <lastmod>2017-05-30T13:39:51.817Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panblog.cn/2017/05/r-programming-vector/</loc>
+    
+    <lastmod>2017-05-30T00:42:48.735Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panblog.cn/2017/05/r-programming-sequences-of-numbers/</loc>
     
     <lastmod>2017-05-29T02:34:50.123Z</lastmod>
@@ -184,13 +205,6 @@
   </url>
   
   <url>
-    <loc>http://panblog.cn/2017/05/r-programming-matrix-dataframe/</loc>
-    
-    <lastmod>2017-05-22T15:14:40.637Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://panblog.cn/2017/05/tips-to-optimize-a-hexo-theme/</loc>
     
     <lastmod>2017-05-22T14:12:53.362Z</lastmod>
@@ -355,13 +369,6 @@
     <loc>http://panblog.cn/2017/05/dbm-basic-sql-tips/</loc>
     
     <lastmod>2017-05-21T00:58:21.647Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panblog.cn/2017/05/r-programming-vector/</loc>
-    
-    <lastmod>2017-05-20T16:52:04.469Z</lastmod>
     
   </url>
   
