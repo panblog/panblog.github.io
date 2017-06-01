@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panblog.cn/2017/05/r-programming-create-numbers/</loc>
+    
+    <lastmod>2017-06-01T13:27:20.688Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panblog.cn/2017/05/r-programming-browse-data/</loc>
     
-    <lastmod>2017-05-30T14:11:04.851Z</lastmod>
+    <lastmod>2017-05-30T14:31:31.046Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>http://panblog.cn/2017/05/r-programming-vector/</loc>
     
     <lastmod>2017-05-30T00:42:48.735Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panblog.cn/2017/05/r-programming-sequences-of-numbers/</loc>
-    
-    <lastmod>2017-05-29T02:34:50.123Z</lastmod>
     
   </url>
   

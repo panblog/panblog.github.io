@@ -4,8 +4,31 @@
 
     
   <url>
+    <loc>http://panblog.cn/2017/05/r-programming-create-numbers/</loc>
+    <lastmod>2017-06-01T13:27:20.688Z</lastmod>
+    <data>
+        <display>
+        <title>R programming - create numbers</title>
+        <pubTime>2017-05-17T16:00:00.000Z</pubTime>
+        
+        <tag>R</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://panblog.cn/categories/Programming/"/>
+          
+             
+              <breadCrumb title="R" url="http://panblog.cn/categories/Programming/R/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://panblog.cn/2017/05/r-programming-browse-data/</loc>
-    <lastmod>2017-05-30T14:11:04.851Z</lastmod>
+    <lastmod>2017-05-30T14:31:31.046Z</lastmod>
     <data>
         <display>
         <title>R programming - browse data</title>
@@ -56,29 +79,6 @@
         <display>
         <title>R programming - vector</title>
         <pubTime>2017-05-17T17:00:00.000Z</pubTime>
-        
-        <tag>R</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://panblog.cn/categories/Programming/"/>
-          
-             
-              <breadCrumb title="R" url="http://panblog.cn/categories/Programming/R/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://panblog.cn/2017/05/r-programming-sequences-of-numbers/</loc>
-    <lastmod>2017-05-29T02:34:50.123Z</lastmod>
-    <data>
-        <display>
-        <title>R programming - sequences of numbers</title>
-        <pubTime>2017-05-17T16:00:00.000Z</pubTime>
         
         <tag>R</tag>
          
@@ -846,13 +846,13 @@
         <title>八大浪费</title>
         <pubTime>2015-12-22T16:00:00.000Z</pubTime>
         
+        <tag>供应商开发</tag>
+         
         <tag>效率</tag>
          
         <tag>成本</tag>
          
         <tag>浪费</tag>
-         
-        <tag>供应商开发</tag>
          
          
            
@@ -1121,15 +1121,15 @@
         <title>成本节约路线图</title>
         <pubTime>2015-08-18T16:00:00.000Z</pubTime>
         
-        <tag>采购</tag>
-         
-        <tag>供应商管理</tag>
-         
         <tag>效率</tag>
          
         <tag>成本</tag>
          
         <tag>浪费</tag>
+         
+        <tag>采购</tag>
+         
+        <tag>供应商管理</tag>
          
          
            
