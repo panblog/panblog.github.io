@@ -1,0 +1,910 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Monda:300,300italic,400,400italic,700,700italic|Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="R," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Basic R commands on manipulating data with dplyr.  dplyr is a fast and powerful R package written by Hadley Wickham and Romain Francois that provides a consistent and concise grammar for manipulating">
+<meta name="keywords" content="R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R programming - manipulating data with dplyr">
+<meta property="og:url" content="http://panblog.cn/2017/06/r-programming-manipulating-data-with-dplyr/index.html">
+<meta property="og:site_name" content="PANBLOG">
+<meta property="og:description" content="Basic R commands on manipulating data with dplyr.  dplyr is a fast and powerful R package written by Hadley Wickham and Romain Francois that provides a consistent and concise grammar for manipulating">
+<meta property="og:updated_time" content="2017-06-03T16:15:56.898Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="R programming - manipulating data with dplyr">
+<meta name="twitter:description" content="Basic R commands on manipulating data with dplyr.  dplyr is a fast and powerful R package written by Hadley Wickham and Romain Francois that provides a consistent and concise grammar for manipulating">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'FIASJ1V00X',
+      apiKey: 'dc367d28dcf9cc807cb1f651e5845795',
+      indexName: 'panblog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://panblog.cn/2017/06/r-programming-manipulating-data-with-dplyr/"/>
+
+
+
+
+
+  <title> R programming - manipulating data with dplyr | PANBLOG </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?076048103484014510debad82a5c4349";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">PANBLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Let the good happen</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://panblog.cn/2017/06/r-programming-manipulating-data-with-dplyr/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PANBLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                R programming - manipulating data with dplyr
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-02T00:00:00+08:00">
+                2017-06-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index">
+                    <span itemprop="name">Programming</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/R/" itemprop="url" rel="index">
+                    <span itemprop="name">R</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/r-programming-manipulating-data-with-dplyr/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/r-programming-manipulating-data-with-dplyr/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Basic R commands on manipulating data with <code>dplyr</code>. </p>
+<p><code>dplyr</code> is a fast and powerful R package written by Hadley Wickham and Romain Francois that provides a consistent and concise grammar for manipulating tabular data. One unique aspect of <code>dplyr</code> is that the same set of tools allow you to work with tabular data from a variety of sources, including data frames, data tables, databases and multidimensional arrays. In below demo, we’ll focus on data frames, but everything you learn will apply equally to other formats.</p>
+<p>Basic manipulating functions include <code>select()</code>, <code>filter()</code>, <code>arrange()</code>, <code>summarize()</code>.</p>
+<a id="more"></a>
+<hr>
+<h1 id="Foundation"><a href="#Foundation" class="headerlink" title="Foundation"></a>Foundation</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&gt; cran &lt;- tbl_df(mydf)</div><div class="line"><span class="comment"># load data, tbl_df stands for data frame table</span></div><div class="line"></div><div class="line">rm(<span class="string">"mydf"</span>)</div><div class="line"><span class="comment"># remove the original dataframe from your workspace, to avoid confusion</span></div><div class="line"></div><div class="line">&gt; cran</div><div class="line"><span class="comment"># A tibble: 225,468 x 11</span></div><div class="line">       X       date     time    size r_version r_arch      r_os      package version country ip_id</div><div class="line">   &lt;int&gt;      &lt;chr&gt;    &lt;chr&gt;   &lt;int&gt;     &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;int&gt;</div><div class="line"> <span class="number">1</span>     <span class="number">1</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">54</span>:<span class="number">41</span>   <span class="number">80589</span>     <span class="number">3.1</span><span class="number">.0</span> x86_64   mingw32    htmltools   <span class="number">0.2</span><span class="number">.4</span>      US     <span class="number">1</span></div><div class="line"> <span class="number">2</span>     <span class="number">2</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">59</span>:<span class="number">53</span>  <span class="number">321767</span>     <span class="number">3.1</span><span class="number">.0</span> x86_64   mingw32      tseries <span class="number">0.10</span>-<span class="number">32</span>      US     <span class="number">2</span></div><div class="line"> <span class="number">3</span>     <span class="number">3</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">47</span>:<span class="number">13</span>  <span class="number">748063</span>     <span class="number">3.1</span><span class="number">.0</span> x86_64 linux-gnu        party  <span class="number">1.0</span>-<span class="number">15</span>      US     <span class="number">3</span></div><div class="line"> <span class="number">4</span>     <span class="number">4</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">48</span>:<span class="number">05</span>  <span class="number">606104</span>     <span class="number">3.1</span><span class="number">.0</span> x86_64 linux-gnu        Hmisc  <span class="number">3.14</span>-<span class="number">4</span>      US     <span class="number">3</span></div><div class="line"> <span class="number">5</span>     <span class="number">5</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">46</span>:<span class="number">50</span>   <span class="number">79825</span>     <span class="number">3.0</span><span class="number">.2</span> x86_64 linux-gnu       digest   <span class="number">0.6</span><span class="number">.4</span>      CA     <span class="number">4</span></div><div class="line"> <span class="number">6</span>     <span class="number">6</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">48</span>:<span class="number">04</span>   <span class="number">77681</span>     <span class="number">3.1</span><span class="number">.0</span> x86_64 linux-gnu randomForest   <span class="number">4.6</span>-<span class="number">7</span>      US     <span class="number">3</span></div><div class="line"> <span class="number">7</span>     <span class="number">7</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">48</span>:<span class="number">35</span>  <span class="number">393754</span>     <span class="number">3.1</span><span class="number">.0</span> x86_64 linux-gnu         plyr   <span class="number">1.8</span><span class="number">.1</span>      US     <span class="number">3</span></div><div class="line"> <span class="number">8</span>     <span class="number">8</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">47</span>:<span class="number">30</span>   <span class="number">28216</span>     <span class="number">3.0</span><span class="number">.2</span> x86_64 linux-gnu      whisker   <span class="number">0.3</span>-<span class="number">2</span>      US     <span class="number">5</span></div><div class="line"> <span class="number">9</span>     <span class="number">9</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">54</span>:<span class="number">58</span>    <span class="number">5928</span>      &lt;<span class="literal">NA</span>&gt;   &lt;<span class="literal">NA</span>&gt;      &lt;<span class="literal">NA</span>&gt;         Rcpp  <span class="number">0.10</span><span class="number">.4</span>      CN     <span class="number">6</span></div><div class="line"><span class="number">10</span>    <span class="number">10</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">15</span>:<span class="number">35</span> <span class="number">2206029</span>     <span class="number">3.0</span><span class="number">.2</span> x86_64 linux-gnu     hflights     <span class="number">0.1</span>      US     <span class="number">7</span></div><div class="line"><span class="comment"># ... with 225,458 more rows</span></div><div class="line"><span class="comment"># once load package dplyr and read data, output is much more informative and compact than what we would get if we printed the original data frame (mydf)</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="select"><a href="#select" class="headerlink" title="select()"></a>select()</h1><p>select a subset of columns</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt; select(cran, ip_id, package, country)</div><div class="line"><span class="comment"># in package dplyr, we don't have to type cran$ip_id, cran$package, and cran$country</span></div><div class="line"></div><div class="line">&gt; select(cran, r_arch:country)</div><div class="line"><span class="comment"># select all columns starting from r_arch and ending with country</span></div><div class="line"></div><div class="line">&gt; select(cran, country:r_arch)</div><div class="line"><span class="comment"># select the same columns in reverse order</span></div><div class="line"></div><div class="line">&gt; select(cran, -time)</div><div class="line">&gt; select(cran, -(X:size))</div><div class="line"><span class="comment"># specify the columns we want to throw away</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h1><p>select a subset of rows</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; filter(cran, r_version==<span class="string">'3.1.1'</span>, country==<span class="string">'US'</span>)</div><div class="line"><span class="comment"># AND conditions</span></div><div class="line"></div><div class="line">&gt; filter(cran, country==<span class="string">'US'</span>|country==<span class="string">'IN'</span>)</div><div class="line"><span class="comment"># OR conditions</span></div><div class="line"></div><div class="line">&gt; filter(cran, !is.na(r_version))</div><div class="line"><span class="comment"># remove NA rows</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="arrange"><a href="#arrange" class="headerlink" title="arrange()"></a>arrange()</h1><p>make rows in order</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; arrange(cran2, country, desc(r_version), ip_id)</div><div class="line"><span class="comment"># arrange rows in this order: country (ascending), r_version (descending), and ip_id (ascending)</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize()"></a>summarize()</h1><p><code>summarize()</code> usually works together with <code>group_by()</code></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">&gt; by_package &lt;- group_by(cran, package)</div><div class="line">&gt; by_package</div><div class="line">Source: local data frame [<span class="number">225</span>,<span class="number">468</span> x <span class="number">11</span>]</div><div class="line">Groups: package [<span class="number">6</span>,<span class="number">023</span>]</div><div class="line"><span class="comment"># A tibble: 225,468 x 11</span></div><div class="line">       X       date     time    size r_version r_arch      r_os      package version country ip_id</div><div class="line">   &lt;int&gt;      &lt;chr&gt;    &lt;chr&gt;   &lt;int&gt;     &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;int&gt;</div><div class="line"> <span class="number">1</span>     <span class="number">1</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">54</span>:<span class="number">41</span>   <span class="number">80589</span>     <span class="number">3.1</span><span class="number">.0</span> x86_64   mingw32    htmltools   <span class="number">0.2</span><span class="number">.4</span>      US     <span class="number">1</span></div><div class="line"> <span class="number">2</span>     <span class="number">2</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">59</span>:<span class="number">53</span>  <span class="number">321767</span>     <span class="number">3.1</span><span class="number">.0</span> x86_64   mingw32      tseries <span class="number">0.10</span>-<span class="number">32</span>      US     <span class="number">2</span></div><div class="line"> <span class="number">3</span>     <span class="number">3</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">47</span>:<span class="number">13</span>  <span class="number">748063</span>     <span class="number">3.1</span><span class="number">.0</span> x86_64 linux-gnu        party  <span class="number">1.0</span>-<span class="number">15</span>      US     <span class="number">3</span></div><div class="line"> <span class="number">4</span>     <span class="number">4</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">48</span>:<span class="number">05</span>  <span class="number">606104</span>     <span class="number">3.1</span><span class="number">.0</span> x86_64 linux-gnu        Hmisc  <span class="number">3.14</span>-<span class="number">4</span>      US     <span class="number">3</span></div><div class="line"> <span class="number">5</span>     <span class="number">5</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">46</span>:<span class="number">50</span>   <span class="number">79825</span>     <span class="number">3.0</span><span class="number">.2</span> x86_64 linux-gnu       digest   <span class="number">0.6</span><span class="number">.4</span>      CA     <span class="number">4</span></div><div class="line"> <span class="number">6</span>     <span class="number">6</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">48</span>:<span class="number">04</span>   <span class="number">77681</span>     <span class="number">3.1</span><span class="number">.0</span> x86_64 linux-gnu randomForest   <span class="number">4.6</span>-<span class="number">7</span>      US     <span class="number">3</span></div><div class="line"> <span class="number">7</span>     <span class="number">7</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">48</span>:<span class="number">35</span>  <span class="number">393754</span>     <span class="number">3.1</span><span class="number">.0</span> x86_64 linux-gnu         plyr   <span class="number">1.8</span><span class="number">.1</span>      US     <span class="number">3</span></div><div class="line"> <span class="number">8</span>     <span class="number">8</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">47</span>:<span class="number">30</span>   <span class="number">28216</span>     <span class="number">3.0</span><span class="number">.2</span> x86_64 linux-gnu      whisker   <span class="number">0.3</span>-<span class="number">2</span>      US     <span class="number">5</span></div><div class="line"> <span class="number">9</span>     <span class="number">9</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">54</span>:<span class="number">58</span>    <span class="number">5928</span>      &lt;<span class="literal">NA</span>&gt;   &lt;<span class="literal">NA</span>&gt;      &lt;<span class="literal">NA</span>&gt;         Rcpp  <span class="number">0.10</span><span class="number">.4</span>      CN     <span class="number">6</span></div><div class="line"><span class="number">10</span>    <span class="number">10</span> <span class="number">2014</span>-<span class="number">07</span>-<span class="number">08</span> <span class="number">00</span>:<span class="number">15</span>:<span class="number">35</span> <span class="number">2206029</span>     <span class="number">3.0</span><span class="number">.2</span> x86_64 linux-gnu     hflights     <span class="number">0.1</span>      US     <span class="number">7</span></div><div class="line"><span class="comment"># ... with 225,458 more rows</span></div><div class="line"></div><div class="line">&gt; summarize(by_package, mean(size))</div><div class="line"><span class="comment"># A tibble: 6,023 x 2</span></div><div class="line">       package `mean(size)`</div><div class="line">         &lt;chr&gt;        &lt;dbl&gt;</div><div class="line"> <span class="number">1</span>          A3     <span class="number">62194.96</span></div><div class="line"> <span class="number">2</span>         abc   <span class="number">4826665.00</span></div><div class="line"> <span class="number">3</span>    abcdeFBA    <span class="number">455979.87</span></div><div class="line"> <span class="number">4</span> ABCExtremes     <span class="number">22904.33</span></div><div class="line"> <span class="number">5</span>    ABCoptim     <span class="number">17807.25</span></div><div class="line"> <span class="number">6</span>       ABCp2     <span class="number">30473.33</span></div><div class="line"> <span class="number">7</span>    abctools   <span class="number">2589394.00</span></div><div class="line"> <span class="number">8</span>         abd    <span class="number">453631.24</span></div><div class="line"> <span class="number">9</span>        abf2     <span class="number">35692.62</span></div><div class="line"><span class="number">10</span>       abind     <span class="number">32938.88</span></div><div class="line"><span class="comment"># ... with 6,013 more rows</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="Supporting-functions"><a href="#Supporting-functions" class="headerlink" title="Supporting functions"></a>Supporting functions</h1><h2 id="mutate"><a href="#mutate" class="headerlink" title="mutate()"></a>mutate()</h2><p>create a new variable based on the value of one or more existed variables</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; mutate(cran3, size_mb = size / <span class="number">2</span>^<span class="number">20</span>)</div><div class="line"></div><div class="line">&gt; mutate(cran3, size_mb = size / <span class="number">2</span>^<span class="number">20</span>, size_gb = size_mb / <span class="number">2</span>^<span class="number">10</span>)</div><div class="line"><span class="comment"># use the 2nd computed value to create a 3rd column, all in the same line of code</span></div></pre></td></tr></table></figure>
+<h2 id="quantile"><a href="#quantile" class="headerlink" title="quantile()"></a>quantile()</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># default settingquantile</span></div><div class="line">quantile(x, probs = seq(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0.25</span>), na.rm = <span class="literal">FALSE</span>,</div><div class="line">		names = <span class="literal">TRUE</span>, type = <span class="number">7</span>, <span class="keyword">...</span>)</div><div class="line"></div><div class="line"><span class="comment"># see 0.99(or 99%) sample quantile</span></div><div class="line">&gt; quantile(pack_sum$count, probs = <span class="number">0.99</span>)</div><div class="line">   <span class="number">99</span>% </div><div class="line"><span class="number">679.56</span> </div><div class="line"></div><div class="line"><span class="comment"># extract records within 0.99 quantile</span></div><div class="line">&gt; top_counts&lt;-filter(pack_sum, count&gt;<span class="number">679</span>)</div></pre></td></tr></table></figure>
+<h2 id="View"><a href="#View" class="headerlink" title="View()"></a>View()</h2><p>See all records in scrip window, instead of 10 lines of preview in console window.<br><em>Note that the ‘V’ in <code>View()</code> is capitalized</em></p>
+<h2 id="gt"><a href="#gt" class="headerlink" title="%&gt;%"></a>%&gt;%</h2><p><code>%&gt;%</code> allows us to chain the function calls in a linear fashion. The code to the right of <code>%&gt;%</code> operates on the result from the code to the left of <code>%&gt;%</code>.</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">cran %&gt;%</div><div class="line">  select(ip_id, country, package, size) %&gt;%</div><div class="line">  mutate(size_mb = size / <span class="number">2</span>^<span class="number">20</span>) %&gt;%</div><div class="line">  filter(size_mb &lt;= <span class="number">0.5</span>) %&gt;%</div><div class="line">  arrange(desc(size_mb)) %&gt;%</div><div class="line">  print</div><div class="line">  </div><div class="line">  </div><div class="line">result2 &lt;-</div><div class="line">  arrange(</div><div class="line">    filter(</div><div class="line">      summarize(</div><div class="line">        group_by(cran,</div><div class="line">                 package</div><div class="line">        ),</div><div class="line">        count = n(),</div><div class="line">        unique = n_distinct(ip_id),</div><div class="line">        countries = n_distinct(country),</div><div class="line">        avg_bytes = mean(size)</div><div class="line">      ),</div><div class="line">      countries &gt; <span class="number">60</span></div><div class="line">    ),</div><div class="line">    desc(countries),</div><div class="line">    avg_bytes</div><div class="line">  )</div><div class="line">print(result2)</div><div class="line"><span class="comment"># above code generate same result as below</span></div><div class="line"></div><div class="line">result3 &lt;-</div><div class="line">  cran %&gt;%</div><div class="line">  group_by(package) %&gt;%</div><div class="line">  summarize(count = n(),</div><div class="line">            unique = n_distinct(ip_id),</div><div class="line">            countries = n_distinct(country),</div><div class="line">            avg_bytes = mean(size)</div><div class="line">  ) %&gt;%</div><div class="line">  filter(countries &gt; <span class="number">60</span>) %&gt;%</div><div class="line">  arrange(desc(countries), avg_bytes)</div><div class="line"></div><div class="line"><span class="comment"># Print result to console</span></div><div class="line">print(result3)</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/R/" rel="tag"># R</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/r-programming-browse-data/" rel="next" title="R programming - browse data">
+                <i class="fa fa-chevron-left"></i> R programming - browse data
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Pan" />
+          <p class="site-author-name" itemprop="name">Pan</p>
+           
+              <p class="site-description motion-element" itemprop="description">供应链人</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fanpancn/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-binoculars"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.scm-blog.com/" title="刘宝红专栏" target="_blank">刘宝红专栏</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.photo.withqiuliang.com/" title="秋影随行" target="_blank">秋影随行</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wiz.cn/" title="为知笔记" target="_blank">为知笔记</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://itellyou.cn/" title="I Tell You" target="_blank">I Tell You</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io/icons/" title="FontAwesome" target="_blank">FontAwesome</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Foundation"><span class="nav-number">1.</span> <span class="nav-text">Foundation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#select"><span class="nav-number">2.</span> <span class="nav-text">select()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#filter"><span class="nav-number">3.</span> <span class="nav-text">filter()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#arrange"><span class="nav-number">4.</span> <span class="nav-text">arrange()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#summarize"><span class="nav-number">5.</span> <span class="nav-text">summarize()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Supporting-functions"><span class="nav-number">6.</span> <span class="nav-text">Supporting functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mutate"><span class="nav-number">6.1.</span> <span class="nav-text">mutate()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quantile"><span class="nav-number">6.2.</span> <span class="nav-text">quantile()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View"><span class="nav-number">6.3.</span> <span class="nav-text">View()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gt"><span class="nav-number">6.4.</span> <span class="nav-text">%>%</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pan</span>
+</div>
+
+
+<div class="powered-by">
+  Welcome to <a class="theme-link" href="http://panblog.cn">PanBlog</a>, a github blog of Pan :)
+</div>
+
+<div class="theme-info">
+  Theme - NexT
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://panfanblog.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://panblog.cn/2017/06/r-programming-manipulating-data-with-dplyr/';
+          this.page.identifier = '2017/06/r-programming-manipulating-data-with-dplyr/';
+          this.page.title = 'R programming - manipulating data with dplyr';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://panfanblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

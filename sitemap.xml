@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panblog.cn/2017/06/r-programming-manipulating-data-with-dplyr/</loc>
+    
+    <lastmod>2017-06-03T16:15:56.898Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panblog.cn/2017/05/r-programming-create-numbers/</loc>
     
     <lastmod>2017-06-01T13:27:20.688Z</lastmod>
