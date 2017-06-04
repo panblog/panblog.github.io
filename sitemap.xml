@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panblog.cn/2017/06/poem-tiwujiangting-shengbai/</loc>
+    
+    <lastmod>2017-06-04T06:38:11.684Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panblog.cn/resume/index.html</loc>
+    
+    <lastmod>2017-06-04T06:27:13.159Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panblog.cn/2017/06/bm-tb-guideline-of-surviving-in-career/</loc>
+    
+    <lastmod>2017-06-04T06:25:35.543Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panblog.cn/2017/06/r-programming-manipulating-data-with-dplyr/</loc>
     
-    <lastmod>2017-06-03T16:15:56.898Z</lastmod>
+    <lastmod>2017-06-04T05:48:17.450Z</lastmod>
     
   </url>
   
@@ -152,13 +173,6 @@
     <loc>http://panblog.cn/2015/06/poem-busuanzi-fengyu/</loc>
     
     <lastmod>2017-05-29T01:31:42.886Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panblog.cn/resume/index.html</loc>
-    
-    <lastmod>2017-05-25T05:17:03.251Z</lastmod>
     
   </url>
   
