@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panblog.cn/2017/06/github-deploy-hexo-to-both-github-and-coding/</loc>
+    
+    <lastmod>2017-06-07T03:11:06.422Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panblog.cn/about/index.html</loc>
+    
+    <lastmod>2017-06-07T03:01:28.989Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panblog.cn/2017/05/github-let-github-site-be-searchable/</loc>
     
     <lastmod>2017-06-06T04:45:10.393Z</lastmod>
@@ -47,13 +61,6 @@
     <loc>http://panblog.cn/2016/12/bm-scm-guide-of-eo-disposition/</loc>
     
     <lastmod>2017-06-06T04:19:46.643Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panblog.cn/about/index.html</loc>
-    
-    <lastmod>2017-06-06T03:53:43.063Z</lastmod>
     
   </url>
   

@@ -4,6 +4,34 @@
 
     
   <url>
+    <loc>http://panblog.cn/2017/06/github-deploy-hexo-to-both-github-and-coding/</loc>
+    <lastmod>2017-06-07T03:11:06.422Z</lastmod>
+    <data>
+        <display>
+        <title>同时部署Hexo博客至GitHub与Coding.net</title>
+        <pubTime>2017-06-07T13:38:31.000Z</pubTime>
+        
+        <tag>github</tag>
+         
+        <tag>coding.net</tag>
+         
+        <tag>ssh</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://panblog.cn/categories/Programming/"/>
+          
+             
+              <breadCrumb title="GitHub" url="http://panblog.cn/categories/Programming/GitHub/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
     <loc>http://panblog.cn/2017/05/github-let-github-site-be-searchable/</loc>
     <lastmod>2017-06-06T04:45:10.393Z</lastmod>
     <data>
@@ -169,7 +197,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>http://panblog.cn/2017/06/poem-tiwujiangting-shengbai/</loc>
