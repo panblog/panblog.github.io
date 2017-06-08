@@ -4,6 +4,77 @@
 
     
   <url>
+    <loc>http://www.panblog.cn/2017/06/r-programming-tidying-data-with-tidyr/</loc>
+    <lastmod>2017-06-08T15:28:02.598Z</lastmod>
+    <data>
+        <display>
+        <title>R programming - tidying data with tidyr</title>
+        <pubTime>2017-06-08T12:44:03.000Z</pubTime>
+        
+        <tag>R</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://www.panblog.cn/categories/Programming/"/>
+          
+             
+              <breadCrumb title="R" url="http://www.panblog.cn/categories/Programming/R/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.panblog.cn/2017/06/r-programming-manipulating-data-with-dplyr/</loc>
+    <lastmod>2017-06-08T15:06:24.168Z</lastmod>
+    <data>
+        <display>
+        <title>R programming - manipulating data with dplyr</title>
+        <pubTime>2017-06-01T16:00:00.000Z</pubTime>
+        
+        <tag>R</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://www.panblog.cn/categories/Programming/"/>
+          
+             
+              <breadCrumb title="R" url="http://www.panblog.cn/categories/Programming/R/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.panblog.cn/2017/05/r-programming-hints-of-swirl/</loc>
+    <lastmod>2017-06-08T13:04:50.942Z</lastmod>
+    <data>
+        <display>
+        <title>Hints of swirl</title>
+        <pubTime>2017-05-16T16:00:00.000Z</pubTime>
+        
+        <tag>R</tag>
+         
+        <tag>swirl</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://www.panblog.cn/categories/Programming/"/>
+          
+             
+              <breadCrumb title="R" url="http://www.panblog.cn/categories/Programming/R/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.panblog.cn/2017/06/github-deploy-hexo-to-both-github-and-coding/</loc>
     <lastmod>2017-06-07T03:11:06.422Z</lastmod>
     <data>
@@ -50,29 +121,6 @@
           
              
               <breadCrumb title="GitHub" url="http://www.panblog.cn/categories/Programming/GitHub/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.panblog.cn/2017/06/r-programming-manipulating-data-with-dplyr/</loc>
-    <lastmod>2017-06-06T04:42:54.382Z</lastmod>
-    <data>
-        <display>
-        <title>R programming - manipulating data with dplyr</title>
-        <pubTime>2017-06-01T16:00:00.000Z</pubTime>
-        
-        <tag>R</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://www.panblog.cn/categories/Programming/"/>
-          
-             
-              <breadCrumb title="R" url="http://www.panblog.cn/categories/Programming/R/"/>
           
         </display>
     </data>
@@ -880,31 +928,6 @@
 
     
   <url>
-    <loc>http://www.panblog.cn/2017/05/r-programming-hints-of-swirl/</loc>
-    <lastmod>2017-05-21T04:05:02.547Z</lastmod>
-    <data>
-        <display>
-        <title>Hints of swirl</title>
-        <pubTime>2017-05-16T16:00:00.000Z</pubTime>
-        
-        <tag>R</tag>
-         
-        <tag>swirl</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://www.panblog.cn/categories/Programming/"/>
-          
-             
-              <breadCrumb title="R" url="http://www.panblog.cn/categories/Programming/R/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.panblog.cn/2015/12/knowhow-goal-structure/</loc>
     <lastmod>2017-05-21T03:56:15.883Z</lastmod>
     <data>
@@ -1012,13 +1035,13 @@
         <title>八大浪费</title>
         <pubTime>2015-12-22T16:00:00.000Z</pubTime>
         
-        <tag>供应商开发</tag>
-         
         <tag>效率</tag>
          
         <tag>成本</tag>
          
         <tag>浪费</tag>
+         
+        <tag>供应商开发</tag>
          
          
            
@@ -1216,15 +1239,15 @@
         <title>成本节约路线图</title>
         <pubTime>2015-08-18T16:00:00.000Z</pubTime>
         
+        <tag>采购</tag>
+         
+        <tag>供应商管理</tag>
+         
         <tag>效率</tag>
          
         <tag>成本</tag>
          
         <tag>浪费</tag>
-         
-        <tag>采购</tag>
-         
-        <tag>供应商管理</tag>
          
          
            
