@@ -4,8 +4,58 @@
 
     
   <url>
+    <loc>http://www.panblog.cn/2017/06/r-programming-dates-times-with-lubridate/</loc>
+    <lastmod>2017-06-10T04:30:39.601Z</lastmod>
+    <data>
+        <display>
+        <title>R programming - dates and times with lubridate</title>
+        <pubTime>2017-06-10T02:08:23.000Z</pubTime>
+        
+        <tag>R</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://www.panblog.cn/categories/Programming/"/>
+          
+             
+              <breadCrumb title="R" url="http://www.panblog.cn/categories/Programming/R/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.panblog.cn/2017/06/github-deploy-hexo-to-both-github-and-coding/</loc>
+    <lastmod>2017-06-10T02:11:18.978Z</lastmod>
+    <data>
+        <display>
+        <title>同时部署Hexo博客至GitHub与Coding.net</title>
+        <pubTime>2017-06-07T13:38:31.000Z</pubTime>
+        
+        <tag>github</tag>
+         
+        <tag>coding.net</tag>
+         
+        <tag>ssh</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://www.panblog.cn/categories/Programming/"/>
+          
+             
+              <breadCrumb title="GitHub" url="http://www.panblog.cn/categories/Programming/GitHub/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.panblog.cn/2017/06/r-programming-tidying-data-with-tidyr/</loc>
-    <lastmod>2017-06-08T15:28:02.598Z</lastmod>
+    <lastmod>2017-06-08T15:45:20.347Z</lastmod>
     <data>
         <display>
         <title>R programming - tidying data with tidyr</title>
@@ -68,33 +118,6 @@
           
              
               <breadCrumb title="R" url="http://www.panblog.cn/categories/Programming/R/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.panblog.cn/2017/06/github-deploy-hexo-to-both-github-and-coding/</loc>
-    <lastmod>2017-06-07T03:11:06.422Z</lastmod>
-    <data>
-        <display>
-        <title>同时部署Hexo博客至GitHub与Coding.net</title>
-        <pubTime>2017-06-07T13:38:31.000Z</pubTime>
-        
-        <tag>github</tag>
-         
-        <tag>coding.net</tag>
-         
-        <tag>ssh</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://www.panblog.cn/categories/Programming/"/>
-          
-             
-              <breadCrumb title="GitHub" url="http://www.panblog.cn/categories/Programming/GitHub/"/>
           
         </display>
     </data>
@@ -1035,13 +1058,13 @@
         <title>八大浪费</title>
         <pubTime>2015-12-22T16:00:00.000Z</pubTime>
         
+        <tag>供应商开发</tag>
+         
         <tag>效率</tag>
          
         <tag>成本</tag>
          
         <tag>浪费</tag>
-         
-        <tag>供应商开发</tag>
          
          
            
@@ -1239,15 +1262,15 @@
         <title>成本节约路线图</title>
         <pubTime>2015-08-18T16:00:00.000Z</pubTime>
         
-        <tag>采购</tag>
-         
-        <tag>供应商管理</tag>
-         
         <tag>效率</tag>
          
         <tag>成本</tag>
          
         <tag>浪费</tag>
+         
+        <tag>采购</tag>
+         
+        <tag>供应商管理</tag>
          
          
            

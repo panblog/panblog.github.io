@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.panblog.cn/2017/06/r-programming-dates-times-with-lubridate/</loc>
+    
+    <lastmod>2017-06-10T04:30:39.601Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.panblog.cn/2017/06/github-deploy-hexo-to-both-github-and-coding/</loc>
+    
+    <lastmod>2017-06-10T02:11:18.978Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.panblog.cn/2017/06/r-programming-tidying-data-with-tidyr/</loc>
     
-    <lastmod>2017-06-08T15:28:02.598Z</lastmod>
+    <lastmod>2017-06-08T15:45:20.347Z</lastmod>
     
   </url>
   
@@ -19,13 +33,6 @@
     <loc>http://www.panblog.cn/2017/05/r-programming-hints-of-swirl/</loc>
     
     <lastmod>2017-06-08T13:04:50.942Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.panblog.cn/2017/06/github-deploy-hexo-to-both-github-and-coding/</loc>
-    
-    <lastmod>2017-06-07T03:11:06.422Z</lastmod>
     
   </url>
   
