@@ -1,0 +1,953 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Monda:300,300italic,400,400italic,700,700italic|Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="R," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Basic R commands on dates and times with lubridate. lubridate functions to work with date-times and time-spans: fast and user friendly parsing of date-time data, extraction and updating of components">
+<meta name="keywords" content="R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R programming - dates and times with lubridate">
+<meta property="og:url" content="http://www.panblog.cn/2017/06/r-programming-dates-times-with-lubridate/index.html">
+<meta property="og:site_name" content="PANBLOG">
+<meta property="og:description" content="Basic R commands on dates and times with lubridate. lubridate functions to work with date-times and time-spans: fast and user friendly parsing of date-time data, extraction and updating of components">
+<meta property="og:updated_time" content="2017-06-10T04:30:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="R programming - dates and times with lubridate">
+<meta name="twitter:description" content="Basic R commands on dates and times with lubridate. lubridate functions to work with date-times and time-spans: fast and user friendly parsing of date-time data, extraction and updating of components">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'FIASJ1V00X',
+      apiKey: 'dc367d28dcf9cc807cb1f651e5845795',
+      indexName: 'panblog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.panblog.cn/2017/06/r-programming-dates-times-with-lubridate/"/>
+
+
+
+
+
+  <title> R programming - dates and times with lubridate | PANBLOG </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?076048103484014510debad82a5c4349";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">PANBLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Let the good happen</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.panblog.cn/2017/06/r-programming-dates-times-with-lubridate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PANBLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                R programming - dates and times with lubridate
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-10T10:08:23+08:00">
+                2017-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index">
+                    <span itemprop="name">Programming</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/R/" itemprop="url" rel="index">
+                    <span itemprop="name">R</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/06/r-programming-dates-times-with-lubridate/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Basic R commands on dates and times with <code>lubridate</code>.</p>
+<p><code>lubridate</code> functions to work with date-times and time-spans: fast and user friendly parsing of date-time data, extraction and updating of components of a date-time (years, months, days, hours, minutes, and seconds), algebraic manipulation on date-time and time-span objects. The <code>lubridate</code> package has a consistent and memorable syntax that makes working with dates easy and fun.</p>
+<a id="more"></a>
+<hr>
+<h1 id="Read-dates-amp-times"><a href="#Read-dates-amp-times" class="headerlink" title="Read dates &amp; times"></a>Read dates &amp; times</h1><h2 id="读取系统时间"><a href="#读取系统时间" class="headerlink" title="读取系统时间"></a>读取系统时间</h2><p>Grammar</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">today(tzone = <span class="string">""</span>)</div><div class="line">now(tzone = <span class="string">""</span>)</div></pre></td></tr></table></figure>
+<p>Examples</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt; this_day &lt;- today()</div><div class="line">&gt; this_day</div><div class="line">[<span class="number">1</span>] <span class="string">"2017-06-10"</span></div><div class="line"></div><div class="line">&gt; this_moment &lt;- now()</div><div class="line">&gt; this_moment</div><div class="line">[<span class="number">1</span>] <span class="string">"2017-06-10 10:34:24 CST"</span></div><div class="line"></div><div class="line">&gt; now(tzone=<span class="string">"America/New_York"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"2017-06-09 22:34:36 EDT"</span></div></pre></td></tr></table></figure>
+<h2 id="时区"><a href="#时区" class="headerlink" title="时区"></a>时区</h2><p>Grammar</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">tz(x) <span class="comment">#提取时间数据的时区</span></div><div class="line">tz(x) &lt;- value</div><div class="line"></div><div class="line">with_tz(time, tzone = <span class="string">""</span>) <span class="comment">#将时间数据转换为另一个时区的同一时间</span></div><div class="line">force_tz(time, tzone = <span class="string">""</span>) <span class="comment">#将时间数据的时区强制转换为另一个时区</span></div><div class="line"></div><div class="line"><span class="comment"># 时区信息可参考http://en.wikipedia.org/wiki/List_of_tz_database_time_zones</span></div></pre></td></tr></table></figure>
+<p>Examples</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&gt; tz(mdy(<span class="string">"Jun 4, 2011"</span>, tz=<span class="string">"Asia/Shanghai"</span>))</div><div class="line">[<span class="number">1</span>] <span class="string">"Asia/Shanghai"</span></div><div class="line"></div><div class="line">&gt; this_moment &lt;- now()</div><div class="line">&gt; tz(this_moment)</div><div class="line">[<span class="number">1</span>] <span class="string">""</span></div><div class="line">&gt; tz(this_moment) &lt;- <span class="string">"Asia/Shanghai"</span></div><div class="line">&gt; tz(this_moment)</div><div class="line">[<span class="number">1</span>] <span class="string">"Asia/Shanghai"</span></div><div class="line"></div><div class="line">&gt; meeting &lt;- ymd_hms(<span class="string">"2011-07-01 09:00:00"</span>, tz = <span class="string">"Pacific/Auckland"</span>);</div><div class="line">&gt; meeting</div><div class="line">[<span class="number">1</span>] <span class="string">"2011-07-01 09:00:00 NZST"</span></div><div class="line"></div><div class="line">&gt; with_tz(meeting, <span class="string">"America/Chicago"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"2011-06-30 16:00:00 CDT"</span></div><div class="line"><span class="comment">#显示不同的时区相同的时刻</span></div><div class="line"></div><div class="line">&gt; mistake &lt;- force_tz(meeting, <span class="string">"America/Chicago"</span>);</div><div class="line">&gt; mistake</div><div class="line">[<span class="number">1</span>] <span class="string">"2011-07-01 09:00:00 CDT"</span></div><div class="line">&gt; with_tz(mistake, <span class="string">"Pacific/Auckland"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"2011-07-02 02:00:00 NZST"</span></div></pre></td></tr></table></figure>
+<h2 id="提取信息"><a href="#提取信息" class="headerlink" title="提取信息"></a>提取信息</h2><p>提取信息函数second，minute，hour，day，wday，yday，week，month，year，和tz。请注意：</p>
+<ul>
+<li>wday并month具有可选的label参数，它取代了他们的数字输出和平日或月的名称；</li>
+<li>这里的function都是不加s的。year用于读取数据，years用于设置数据。</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt; this_moment</div><div class="line">[<span class="number">1</span>] <span class="string">"2017-06-10 10:34:24 CST"</span></div><div class="line">&gt; year(this_moment)</div><div class="line">[<span class="number">1</span>] <span class="number">2017</span></div><div class="line">&gt; week(this_moment)</div><div class="line">[<span class="number">1</span>] <span class="number">23</span></div><div class="line">&gt; wday(this_moment, label = <span class="literal">TRUE</span>)</div><div class="line">[<span class="number">1</span>] Sat</div><div class="line">Levels: Sun &lt; Mon &lt; Tues &lt; Wed &lt; Thurs &lt; Fri &lt; Sat</div><div class="line">&gt; month(this_moment, label = <span class="literal">TRUE</span>)</div><div class="line">[<span class="number">1</span>] Jun</div><div class="line">Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; Oct &lt; Nov &lt; Dec</div></pre></td></tr></table></figure>
+<h2 id="按照不同时间顺序读取"><a href="#按照不同时间顺序读取" class="headerlink" title="按照不同时间顺序读取"></a>按照不同时间顺序读取</h2><p>Grammar</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ymd(<span class="keyword">...</span>, quiet = <span class="literal">FALSE</span>, tz = <span class="literal">NULL</span>, locale = Sys.getlocale(<span class="string">"LC_TIME"</span>), truncated = <span class="number">0</span>)</div><div class="line">ydm(<span class="keyword">...</span>, quiet = <span class="literal">FALSE</span>, tz = <span class="literal">NULL</span>, locale = Sys.getlocale(<span class="string">"LC_TIME"</span>), truncated = <span class="number">0</span>)</div><div class="line">mdy(<span class="keyword">...</span>, quiet = <span class="literal">FALSE</span>, tz = <span class="literal">NULL</span>, locale = Sys.getlocale(<span class="string">"LC_TIME"</span>), truncated = <span class="number">0</span>)</div><div class="line">myd(<span class="keyword">...</span>, quiet = <span class="literal">FALSE</span>, tz = <span class="literal">NULL</span>, locale = Sys.getlocale(<span class="string">"LC_TIME"</span>), truncated = <span class="number">0</span>)</div><div class="line">dmy(<span class="keyword">...</span>, quiet = <span class="literal">FALSE</span>, tz = <span class="literal">NULL</span>, locale = Sys.getlocale(<span class="string">"LC_TIME"</span>), truncated = <span class="number">0</span>)</div><div class="line">dym(<span class="keyword">...</span>, quiet = <span class="literal">FALSE</span>, tz = <span class="literal">NULL</span>, locale = Sys.getlocale(<span class="string">"LC_TIME"</span>), truncated = <span class="number">0</span>)</div><div class="line">yq(<span class="keyword">...</span>, quiet = <span class="literal">FALSE</span>, tz = <span class="literal">NULL</span>, locale = Sys.getlocale(<span class="string">"LC_TIME"</span>))</div><div class="line"><span class="comment"># 如果时间具有一定的时区，提供在该时区的正式名称tz参数。</span></div></pre></td></tr></table></figure>
+<p>Examples</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 月日年</span></div><div class="line">&gt; ymd(<span class="string">"20110604"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"2011-06-04"</span></div><div class="line">&gt; mdy(<span class="string">"06-04-2011"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"2011-06-04"</span></div><div class="line">&gt; dmy(<span class="string">"04/06/2011"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"2011-06-04"</span></div><div class="line">&gt; dmy(<span class="string">"04062011"</span>) </div><div class="line">[<span class="number">1</span>] <span class="string">"2011-06-04"</span></div><div class="line">&gt; ymd(<span class="string">"2011 Jun 4"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"2011-06-04"</span></div><div class="line">&gt; mdy(<span class="string">"Jun 4, 2011"</span>, tz=<span class="string">"Asia/Shanghai"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"2011-06-04 CST"</span></div><div class="line"></div><div class="line">&gt; ymd(<span class="string">"192012"</span>)</div><div class="line">[<span class="number">1</span>] <span class="literal">NA</span></div><div class="line">&gt; ymd(<span class="string">"1920-1-2"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"1920-01-02"</span></div><div class="line"><span class="comment"># R无法分辨192012，需要辅助添加符号说明</span></div><div class="line"></div><div class="line"><span class="comment"># 时分秒</span></div><div class="line">&gt; hms(<span class="string">"03:22:14"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"3H 22M 14S"</span></div><div class="line">&gt; ymd_hms(<span class="string">"20140823 172302"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"2014-08-23 17:23:02 UTC"</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="Update-dates-amp-times"><a href="#Update-dates-amp-times" class="headerlink" title="Update dates &amp; times"></a>Update dates &amp; times</h1><p>使用update函数，参数使用带<code>s</code>的years, months, hours etc..</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt; update(this_moment, hours = <span class="number">10</span>, minutes = <span class="number">59</span>, seconds = <span class="number">55</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"2017-06-10 10:59:55 CST"</span></div><div class="line"></div><div class="line">&gt; this_moment</div><div class="line">[<span class="number">1</span>] <span class="string">"2017-06-10 10:34:24 CST"</span></div><div class="line"></div><div class="line">&gt; this_moment &lt;- update(this_moment, hours = <span class="number">10</span>, minutes = <span class="number">59</span>, seconds = <span class="number">55</span>)</div><div class="line"></div><div class="line">&gt; this_moment</div><div class="line">[<span class="number">1</span>] <span class="string">"2017-06-10 10:59:55 CST"</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="Calculation"><a href="#Calculation" class="headerlink" title="Calculation"></a>Calculation</h1><h2 id="时间间隔"><a href="#时间间隔" class="headerlink" title="时间间隔"></a>时间间隔</h2><p>Grammar</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">interval(start, end, tzone = attr(start, <span class="string">"tzone"</span>))</div><div class="line">as.period(x, unit, <span class="keyword">...</span>)</div></pre></td></tr></table></figure>
+<p>Examples</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; interval(this_moment, now())</div><div class="line">[<span class="number">1</span>] <span class="number">2017</span>-<span class="number">06</span>-<span class="number">10</span> <span class="number">11</span>:<span class="number">47</span>:<span class="number">37</span> CST--<span class="number">2017</span>-<span class="number">06</span>-<span class="number">10</span> <span class="number">12</span>:<span class="number">11</span>:<span class="number">25</span> CST</div><div class="line">&gt; interval(this_moment, now(), tzone = <span class="string">"Asia/Tokyo"</span>)</div><div class="line">[<span class="number">1</span>] <span class="number">2017</span>-<span class="number">06</span>-<span class="number">10</span> <span class="number">12</span>:<span class="number">47</span>:<span class="number">37</span> JST--<span class="number">2017</span>-<span class="number">06</span>-<span class="number">10</span> <span class="number">13</span>:<span class="number">11</span>:<span class="number">41</span> JST</div><div class="line"><span class="comment"># 两个时间段是由--相连的</span></div><div class="line"></div><div class="line">&gt; leap &lt;- interval(this_moment, now(), tzone = <span class="string">"Asia/Tokyo"</span>)</div><div class="line">&gt; as.period(leap)</div><div class="line">[<span class="number">1</span>] <span class="string">"26M 28.5888628959656S"</span></div><div class="line">&gt; as.period(leap, unit = <span class="string">"seconds"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"1588.58886289597S"</span></div><div class="line">&gt; as.period(leap, unit = <span class="string">"minutes"</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"26M 28.5888628959656S"</span></div></pre></td></tr></table></figure>
+<h2 id="时间数据运算"><a href="#时间数据运算" class="headerlink" title="时间数据运算"></a>时间数据运算</h2><p>Grammar</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Duration Function，单位取决于函数名</span></div><div class="line">seconds(x = <span class="number">1</span>)</div><div class="line">minutes(x = <span class="number">1</span>)</div><div class="line">hours(x = <span class="number">1</span>)</div><div class="line">days(x = <span class="number">1</span>)</div><div class="line">weeks(x = <span class="number">1</span>)</div><div class="line">years(x = <span class="number">1</span>)</div><div class="line">milliseconds(x = <span class="number">1</span>)</div><div class="line">microseconds(x = <span class="number">1</span>)</div><div class="line">nanoseconds(x = <span class="number">1</span>)</div><div class="line">picoseconds(x = <span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="comment"># Duration Function，单位是秒</span></div><div class="line">dseconds(x = <span class="number">1</span>)</div><div class="line">dminutes(x = <span class="number">1</span>)</div><div class="line">dhours(x = <span class="number">1</span>)</div><div class="line">ddays(x = <span class="number">1</span>)</div><div class="line">dweeks(x = <span class="number">1</span>)</div><div class="line">dyears(x = <span class="number">1</span>)</div><div class="line">dmilliseconds(x = <span class="number">1</span>)</div><div class="line">dmicroseconds(x = <span class="number">1</span>)</div><div class="line">dnanoseconds(x = <span class="number">1</span>)</div><div class="line">dpicoseconds(x = <span class="number">1</span>)</div></pre></td></tr></table></figure>
+<p>Examples</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&gt; ymd(<span class="string">'20160228'</span>)+dyears(<span class="number">1</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"2017-02-27"</span></div><div class="line">&gt; ymd(<span class="string">'20160228'</span>)+years(<span class="number">1</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"2017-02-28"</span></div><div class="line"><span class="comment"># dyears(1)表示的365天，而years(1)则是一个整年</span></div><div class="line"></div><div class="line">&gt; dyears(<span class="number">1</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"31536000s (~52.14 weeks)"</span></div><div class="line">&gt; dyears(<span class="number">2</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"63072000s (~2 years)"</span></div><div class="line">&gt; dminutes(<span class="number">1</span>)</div><div class="line">[<span class="number">1</span>] <span class="string">"60s (~1 minutes)"</span></div><div class="line"></div><div class="line"><span class="comment"># 判断是否闰年</span></div><div class="line">&gt; now()</div><div class="line">[<span class="number">1</span>] <span class="string">"2017-06-10 12:23:13 CST"</span></div><div class="line">&gt; leap_year(now())</div><div class="line">[<span class="number">1</span>] <span class="literal">FALSE</span></div><div class="line">&gt; leap_year(now()-dyears())</div><div class="line">[<span class="number">1</span>] <span class="literal">TRUE</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h1><h2 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h2><p>Now, pretend you are in New York City and you are planning to visit a friend in Hong Kong. You seem to have misplaced your itinerary, but you know that your flight departs New York at 17:34 (5:34pm) the day after tomorrow. You also know that your flight is scheduled to arrive in Hong Kong exactly 15 hours and 50 minutes after departure.</p>
+<h2 id="Coding"><a href="#Coding" class="headerlink" title="Coding"></a>Coding</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 读取现在的纽约时间</span></div><div class="line">&gt; nyc &lt;- now(tzone=<span class="string">"America/New_York"</span>)</div><div class="line">&gt; nyc</div><div class="line">[<span class="number">1</span>] <span class="string">"2017-06-09 23:06:24 EDT"</span></div><div class="line"></div><div class="line"><span class="comment"># 计算出发时的纽约时间</span></div><div class="line">&gt; depart &lt;- nyc + days(<span class="number">2</span>)</div><div class="line">&gt; depart</div><div class="line">[<span class="number">1</span>] <span class="string">"2017-06-11 23:06:24 EDT"</span></div><div class="line">&gt; depart &lt;- update(depart, hours=<span class="number">17</span>, minutes=<span class="number">34</span>)</div><div class="line">&gt; depart</div><div class="line">[<span class="number">1</span>] <span class="string">"2017-06-11 17:34:24 EDT"</span></div><div class="line"></div><div class="line"><span class="comment"># 计算到达时的香港时间</span></div><div class="line">&gt; arrive &lt;- depart + hours(<span class="number">15</span>) + minutes(<span class="number">50</span>)</div><div class="line">&gt; arrive &lt;- with_tz(arrive, tzone=<span class="string">"Asia/Hong_Kong"</span>)</div><div class="line">&gt; arrive</div><div class="line">[<span class="number">1</span>] <span class="string">"2017-06-12 21:24:24 HKT"</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html" target="_blank" rel="external">https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/R/" rel="tag"># R</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/r-programming-tidying-data-with-tidyr/" rel="next" title="R programming - tidying data with tidyr">
+                <i class="fa fa-chevron-left"></i> R programming - tidying data with tidyr
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/github-introduction-to-git/" rel="prev" title="简版GIT入门教程">
+                简版GIT入门教程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Pan" />
+          <p class="site-author-name" itemprop="name">Pan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fanpancn/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-quora"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/fan-pan-7bab6128/" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-linkedin-square"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://cos.name/" title="统计之都" target="_blank">统计之都</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.r-bloggers.com/" title="R-Bloggers" target="_blank">R-Bloggers</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.coursera.org/" title="Coursera" target="_blank">Coursera</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://stackoverflow.com/documentation/r/topics" title="StackOverFlow" target="_blank">StackOverFlow</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.r-graph-gallery.com/" title="R Graph Gallery" target="_blank">R Graph Gallery</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://journal.r-project.org/" title="The R Journal" target="_blank">The R Journal</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://bbs.pinggu.org/" title="经管之家" target="_blank">经管之家</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.scm-blog.com/" title="刘宝红专栏" target="_blank">刘宝红专栏</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.photo.withqiuliang.com/" title="秋影随行" target="_blank">秋影随行</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://itellyou.cn/" title="I Tell You" target="_blank">I Tell You</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io/icons/" title="FontAwesome" target="_blank">FontAwesome</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Read-dates-amp-times"><span class="nav-number">1.</span> <span class="nav-text">Read dates & times</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#读取系统时间"><span class="nav-number">1.1.</span> <span class="nav-text">读取系统时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时区"><span class="nav-number">1.2.</span> <span class="nav-text">时区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提取信息"><span class="nav-number">1.3.</span> <span class="nav-text">提取信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按照不同时间顺序读取"><span class="nav-number">1.4.</span> <span class="nav-text">按照不同时间顺序读取</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Update-dates-amp-times"><span class="nav-number">2.</span> <span class="nav-text">Update dates & times</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Calculation"><span class="nav-number">3.</span> <span class="nav-text">Calculation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#时间间隔"><span class="nav-number">3.1.</span> <span class="nav-text">时间间隔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间数据运算"><span class="nav-number">3.2.</span> <span class="nav-text">时间数据运算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Exercise"><span class="nav-number">4.</span> <span class="nav-text">Exercise</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dataset"><span class="nav-number">4.1.</span> <span class="nav-text">Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Coding"><span class="nav-number">4.2.</span> <span class="nav-text">Coding</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pan</span>
+</div>
+
+
+<div class="powered-by">
+  Welcome to <a class="theme-link" href="http://panblog.cn">PanBlog</a>, a github blog of Pan :)
+</div>
+
+<div class="theme-info">
+<p>Hosted by <a href="https://pages.coding.me">Coding Pages</a> and <a href="https://pages.github.com/">GitHub Pages</a></p>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "8105c15858d04180af951ff99e01fdba",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

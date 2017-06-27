@@ -1,0 +1,933 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Monda:300,300italic,400,400italic,700,700italic|Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="R," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Basic R commands on matrix operation">
+<meta name="keywords" content="R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R programming - matrix and data frame">
+<meta property="og:url" content="http://www.panblog.cn/2017/05/r-programming-matrix-dataframe/index.html">
+<meta property="og:site_name" content="PANBLOG">
+<meta property="og:description" content="Basic R commands on matrix operation">
+<meta property="og:updated_time" content="2017-05-30T13:39:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="R programming - matrix and data frame">
+<meta name="twitter:description" content="Basic R commands on matrix operation">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'FIASJ1V00X',
+      apiKey: 'dc367d28dcf9cc807cb1f651e5845795',
+      indexName: 'panblog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.panblog.cn/2017/05/r-programming-matrix-dataframe/"/>
+
+
+
+
+
+  <title> R programming - matrix and data frame | PANBLOG </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?076048103484014510debad82a5c4349";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">PANBLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Let the good happen</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.panblog.cn/2017/05/r-programming-matrix-dataframe/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PANBLOG">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                R programming - matrix and data frame
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-22T00:00:00+08:00">
+                2017-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index">
+                    <span itemprop="name">Programming</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/R/" itemprop="url" rel="index">
+                    <span itemprop="name">R</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/05/r-programming-matrix-dataframe/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Basic R commands on matrix operation</p>
+<a id="more"></a>
+<hr>
+<h1 id="Create-matrix"><a href="#Create-matrix" class="headerlink" title="Create matrix"></a>Create matrix</h1><h2 id="create-a-matrix-directly"><a href="#create-a-matrix-directly" class="headerlink" title="create a matrix directly"></a>create a matrix directly</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; my_matrix2 &lt;- matrix(<span class="number">1</span>:<span class="number">20</span>, <span class="number">4</span>, <span class="number">5</span>)</div><div class="line"></div><div class="line">&gt; identical(my_matrix, my_matrix2)</div><div class="line">[<span class="number">1</span>] <span class="literal">TRUE</span></div></pre></td></tr></table></figure>
+<h2 id="Create-matrix-from-vector"><a href="#Create-matrix-from-vector" class="headerlink" title="Create matrix from vector"></a>Create matrix from vector</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt; my_vector &lt;- <span class="number">1</span>:<span class="number">20</span> </div><div class="line"></div><div class="line"><span class="comment"># my_vector is a vector, it doesn't have a `dim` attribute.</span></div><div class="line"><span class="comment"># vector has `length` attribute</span></div><div class="line">&gt; dim(my_vector)</div><div class="line"><span class="literal">NULL</span></div><div class="line">&gt; length(my_vector)</div><div class="line">[<span class="number">1</span>] <span class="number">20</span></div><div class="line"></div><div class="line"><span class="comment"># convert the vector to matrix</span></div><div class="line">&gt; dim(my_vector) &lt;- c(<span class="number">4</span>, <span class="number">5</span>)</div><div class="line"></div><div class="line">&gt; class(my_vector)</div><div class="line">[<span class="number">1</span>] <span class="string">"matrix"</span></div></pre></td></tr></table></figure>
+<h2 id="see-the-attribute-of-matrix"><a href="#see-the-attribute-of-matrix" class="headerlink" title="see the attribute of matrix"></a>see the attribute of matrix</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; dim(my_vector)</div><div class="line">[<span class="number">1</span>] <span class="number">4</span> <span class="number">5</span></div><div class="line">&gt; attributes(my_vector)</div><div class="line">$dim</div><div class="line">[<span class="number">1</span>] <span class="number">4</span> <span class="number">5</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="Create-data-frame"><a href="#Create-data-frame" class="headerlink" title="Create data frame"></a>Create data frame</h1><h2 id="Convert-matrix-to-data-frame"><a href="#Convert-matrix-to-data-frame" class="headerlink" title="Convert matrix to data frame"></a>Convert matrix to data frame</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&gt; patients &lt;- c(<span class="string">"Bill"</span>, <span class="string">"Gina"</span>, <span class="string">"Kelly"</span>,  <span class="string">"Sean"</span>)</div><div class="line"></div><div class="line">&gt; cbind(patients, my_matrix)</div><div class="line">     patients                       </div><div class="line">[<span class="number">1</span>,] <span class="string">"Bill"</span>   <span class="string">"1"</span> <span class="string">"5"</span> <span class="string">"9"</span>  <span class="string">"13"</span> <span class="string">"17"</span></div><div class="line">[<span class="number">2</span>,] <span class="string">"Gina"</span>   <span class="string">"2"</span> <span class="string">"6"</span> <span class="string">"10"</span> <span class="string">"14"</span> <span class="string">"18"</span></div><div class="line">[<span class="number">3</span>,] <span class="string">"Kelly"</span>  <span class="string">"3"</span> <span class="string">"7"</span> <span class="string">"11"</span> <span class="string">"15"</span> <span class="string">"19"</span></div><div class="line">[<span class="number">4</span>,] <span class="string">"Sean"</span>   <span class="string">"4"</span> <span class="string">"8"</span> <span class="string">"12"</span> <span class="string">"16"</span> <span class="string">"20"</span></div><div class="line"><span class="comment"># variables are converted to string by 'implicit coercion'</span></div><div class="line"><span class="comment"># matrices can only contain ONE class of data.</span></div><div class="line"></div><div class="line">&gt; my_data &lt;- data.frame(patients, my_matrix)</div><div class="line">&gt; my_data</div><div class="line">  patients X1 X2 X3 X4 X5</div><div class="line"><span class="number">1</span>     Bill  <span class="number">1</span>  <span class="number">5</span>  <span class="number">9</span> <span class="number">13</span> <span class="number">17</span></div><div class="line"><span class="number">2</span>     Gina  <span class="number">2</span>  <span class="number">6</span> <span class="number">10</span> <span class="number">14</span> <span class="number">18</span></div><div class="line"><span class="number">3</span>    Kelly  <span class="number">3</span>  <span class="number">7</span> <span class="number">11</span> <span class="number">15</span> <span class="number">19</span></div><div class="line"><span class="number">4</span>     Sean  <span class="number">4</span>  <span class="number">8</span> <span class="number">12</span> <span class="number">16</span> <span class="number">20</span></div><div class="line"></div><div class="line">&gt; class(my_data)</div><div class="line">[<span class="number">1</span>] <span class="string">"data.frame"</span></div></pre></td></tr></table></figure>
+<h2 id="Add-row-column-name"><a href="#Add-row-column-name" class="headerlink" title="Add row/column name"></a>Add row/column name</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&gt; cnames &lt;- c(<span class="string">"patient"</span>, <span class="string">"age"</span>, <span class="string">"weight"</span>, <span class="string">"bp"</span>, <span class="string">"rating"</span>, <span class="string">"test"</span>)</div><div class="line">&gt; colnames(my_data) &lt;- cnames</div><div class="line">&gt; my_data</div><div class="line">  patient age weight bp rating test</div><div class="line"><span class="number">1</span>    Bill   <span class="number">1</span>      <span class="number">5</span>  <span class="number">9</span>     <span class="number">13</span>   <span class="number">17</span></div><div class="line"><span class="number">2</span>    Gina   <span class="number">2</span>      <span class="number">6</span> <span class="number">10</span>     <span class="number">14</span>   <span class="number">18</span></div><div class="line"><span class="number">3</span>   Kelly   <span class="number">3</span>      <span class="number">7</span> <span class="number">11</span>     <span class="number">15</span>   <span class="number">19</span></div><div class="line"><span class="number">4</span>    Sean   <span class="number">4</span>      <span class="number">8</span> <span class="number">12</span>     <span class="number">16</span>   <span class="number">20</span></div><div class="line"><span class="comment"># Pay attention, column `patient` is not the column name</span></div><div class="line"><span class="comment"># it's one column of this data frame</span></div><div class="line"></div><div class="line">&gt; my_rowname &lt;- c(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>,<span class="string">"d"</span>)</div><div class="line">&gt; rownames(my_data) &lt;-my_rowname</div><div class="line">&gt; my_data</div><div class="line">  patient age weight bp rating test</div><div class="line">a    Bill   <span class="number">1</span>      <span class="number">5</span>  <span class="number">9</span>     <span class="number">13</span>   <span class="number">17</span></div><div class="line">b    Gina   <span class="number">2</span>      <span class="number">6</span> <span class="number">10</span>     <span class="number">14</span>   <span class="number">18</span></div><div class="line">c   Kelly   <span class="number">3</span>      <span class="number">7</span> <span class="number">11</span>     <span class="number">15</span>   <span class="number">19</span></div><div class="line">d    Sean   <span class="number">4</span>      <span class="number">8</span> <span class="number">12</span>     <span class="number">16</span>   <span class="number">20</span></div></pre></td></tr></table></figure>
+<h2 id="browse-matrix-dataframe"><a href="#browse-matrix-dataframe" class="headerlink" title="browse matrix/dataframe"></a>browse matrix/dataframe</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># extract all rows, but only columns 11 through 17.</span></div><div class="line">&gt; flag_colors &lt;- flags[, <span class="number">11</span>:<span class="number">17</span>]</div><div class="line"></div><div class="line">&gt; dim(flag_colors)</div><div class="line">[<span class="number">1</span>] <span class="number">194</span>   <span class="number">7</span></div><div class="line"></div><div class="line"><span class="comment"># Browse the first 6 lines of record</span></div><div class="line">&gt; head(flag_colors)</div><div class="line">  red green blue gold white black orange</div><div class="line"><span class="number">1</span>   <span class="number">1</span>     <span class="number">1</span>    <span class="number">0</span>    <span class="number">1</span>     <span class="number">1</span>     <span class="number">1</span>      <span class="number">0</span></div><div class="line"><span class="number">2</span>   <span class="number">1</span>     <span class="number">0</span>    <span class="number">0</span>    <span class="number">1</span>     <span class="number">0</span>     <span class="number">1</span>      <span class="number">0</span></div><div class="line"><span class="number">3</span>   <span class="number">1</span>     <span class="number">1</span>    <span class="number">0</span>    <span class="number">0</span>     <span class="number">1</span>     <span class="number">0</span>      <span class="number">0</span></div><div class="line"><span class="number">4</span>   <span class="number">1</span>     <span class="number">0</span>    <span class="number">1</span>    <span class="number">1</span>     <span class="number">1</span>     <span class="number">0</span>      <span class="number">1</span></div><div class="line"><span class="number">5</span>   <span class="number">1</span>     <span class="number">0</span>    <span class="number">1</span>    <span class="number">1</span>     <span class="number">0</span>     <span class="number">0</span>      <span class="number">0</span></div><div class="line"><span class="number">6</span>   <span class="number">1</span>     <span class="number">0</span>    <span class="number">0</span>    <span class="number">1</span>     <span class="number">0</span>     <span class="number">1</span>      <span class="number">0</span></div><div class="line"></div><div class="line"><span class="comment"># Compactly display the internal structure of an R object, a diagnostic function and an alternative to summary.</span></div><div class="line">&gt; str(flag_colors)</div><div class="line"><span class="string">'data.frame'</span>:	<span class="number">194</span> obs. of  <span class="number">7</span> variables:</div><div class="line"> $ red   : int  <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="keyword">...</span></div><div class="line"> $ green : int  <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="keyword">...</span></div><div class="line"> $ blue  : int  <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="keyword">...</span></div><div class="line"> $ gold  : int  <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="keyword">...</span></div><div class="line"> $ white : int  <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="keyword">...</span></div><div class="line"> $ black : int  <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="keyword">...</span></div><div class="line"> $ orange: int  <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="keyword">...</span></div><div class="line"></div><div class="line"> &gt; summary(flag_colors)</div><div class="line">      red             green             blue             gold            white     </div><div class="line"> Min.   :<span class="number">0.0000</span>   Min.   :<span class="number">0.0000</span>   Min.   :<span class="number">0.0000</span>   Min.   :<span class="number">0.0000</span>   Min.   :<span class="number">0.0000</span></div><div class="line"> 1st Qu.:<span class="number">1.0000</span>   1st Qu.:<span class="number">0.0000</span>   1st Qu.:<span class="number">0.0000</span>   1st Qu.:<span class="number">0.0000</span>   1st Qu.:<span class="number">1.0000</span></div><div class="line"> Median :<span class="number">1.0000</span>   Median :<span class="number">0.0000</span>   Median :<span class="number">1.0000</span>   Median :<span class="number">0.0000</span>   Median :<span class="number">1.0000</span></div><div class="line"> Mean   :<span class="number">0.7887</span>   Mean   :<span class="number">0.4691</span>   Mean   :<span class="number">0.5103</span>   Mean   :<span class="number">0.4691</span>   Mean   :<span class="number">0.7526</span></div><div class="line"> 3rd Qu.:<span class="number">1.0000</span>   3rd Qu.:<span class="number">1.0000</span>   3rd Qu.:<span class="number">1.0000</span>   3rd Qu.:<span class="number">1.0000</span>   3rd Qu.:<span class="number">1.0000</span></div><div class="line"> Max.   :<span class="number">1.0000</span>   Max.   :<span class="number">1.0000</span>   Max.   :<span class="number">1.0000</span>   Max.   :<span class="number">1.0000</span>   Max.   :<span class="number">1.0000</span></div><div class="line"> </div><div class="line">&gt; sum(flags$orange)</div><div class="line">[<span class="number">1</span>] <span class="number">26</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="Loop-functions"><a href="#Loop-functions" class="headerlink" title="Loop functions"></a>Loop functions</h1><p>Both <code>lapply()</code> and <code>sapply()</code> take a list as input, apply a function to each element of the list, then combine and return the result. <code>lapply()</code> always returns a list, whereas <code>sapply()</code> attempts to simplify the result to return matrix/vector.</p>
+<h2 id="lapply"><a href="#lapply" class="headerlink" title="lapply"></a>lapply</h2><p>Call the <code>lapply()</code> function with two arguments. The first argument is the object over which we are looping (i.e. flag_colors), and the second argument is the name of the function we wish to apply to each column (i.e. sum). Remember that the second argument is just the <code>name</code> of the function with no parentheses, etc.</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&gt; cls_list &lt;- lapply(flags, class)</div><div class="line"></div><div class="line">&gt; cls_list</div><div class="line">$name</div><div class="line">[<span class="number">1</span>] <span class="string">"factor"</span></div><div class="line">$landmass</div><div class="line">[<span class="number">1</span>] <span class="string">"integer"</span></div><div class="line">$zone</div><div class="line">[<span class="number">1</span>] <span class="string">"integer"</span></div><div class="line">$area</div><div class="line">[<span class="number">1</span>] <span class="string">"integer"</span></div><div class="line">$population</div><div class="line">[<span class="number">1</span>] <span class="string">"integer"</span></div><div class="line">$language</div><div class="line">[<span class="number">1</span>] <span class="string">"integer"</span></div><div class="line">$religion</div><div class="line">[<span class="number">1</span>] <span class="string">"integer"</span></div><div class="line">$bars</div><div class="line">[<span class="number">1</span>] <span class="string">"integer"</span></div><div class="line">$stripes</div><div class="line">[<span class="number">1</span>] <span class="string">"integer"</span></div><div class="line"></div><div class="line">&gt; class(cls_list)</div><div class="line">[<span class="number">1</span>] <span class="string">"list"</span></div><div class="line"></div><div class="line"><span class="comment"># result as same as sapply</span></div><div class="line">&gt; as.character(cls_list)</div><div class="line"> [<span class="number">1</span>] <span class="string">"factor"</span>  <span class="string">"integer"</span> <span class="string">"integer"</span> <span class="string">"integer"</span> <span class="string">"integer"</span> <span class="string">"integer"</span> <span class="string">"integer"</span> <span class="string">"integer"</span> <span class="string">"integer"</span></div></pre></td></tr></table></figure>
+<h2 id="sapply"><a href="#sapply" class="headerlink" title="sapply"></a>sapply</h2><p><code>sapply()</code> instead returns a matrix when each element of the list returned by <code>lapply()</code> is a vector of the same length. <code>sapply()</code> will returns a vector if each element of the list which <code>lapply()</code> returns is of length one. If the list returned by <code>lapply()</code> is a vector of different length, <code>sapply()</code> will returns as same as <code>lapply()</code>.</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&gt; flag_shapes &lt;- flags[, <span class="number">19</span>:<span class="number">23</span>]</div><div class="line"></div><div class="line">&gt; lapply(flag_shapes, range)</div><div class="line">$circles</div><div class="line">[<span class="number">1</span>] <span class="number">0</span> <span class="number">4</span></div><div class="line">$crosses</div><div class="line">[<span class="number">1</span>] <span class="number">0</span> <span class="number">2</span></div><div class="line">$saltires</div><div class="line">[<span class="number">1</span>] <span class="number">0</span> <span class="number">1</span></div><div class="line">$quarters</div><div class="line">[<span class="number">1</span>] <span class="number">0</span> <span class="number">4</span></div><div class="line">$sunstars</div><div class="line">[<span class="number">1</span>]  <span class="number">0</span> <span class="number">50</span></div><div class="line"></div><div class="line">&gt; shape_mat &lt;- sapply(flag_shapes, range)</div><div class="line">&gt; shape_mat</div><div class="line">     circles crosses saltires quarters sunstars</div><div class="line">[<span class="number">1</span>,]       <span class="number">0</span>       <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span></div><div class="line">[<span class="number">2</span>,]       <span class="number">4</span>       <span class="number">2</span>        <span class="number">1</span>        <span class="number">4</span>       <span class="number">50</span></div><div class="line"></div><div class="line">&gt; class(shape_mat)</div><div class="line">[<span class="number">1</span>] <span class="string">"matrix"</span></div><div class="line"></div><div class="line"><span class="comment"># in below case, lapply=sapply</span></div><div class="line">&gt; unique_vals &lt;- lapply(flags, unique)</div><div class="line">&gt; sapply(unique_vals, length)</div><div class="line">      name   landmass       zone       area population   language   religion</div><div class="line">       <span class="number">194</span>          <span class="number">6</span>          <span class="number">4</span>        <span class="number">136</span>         <span class="number">48</span>         <span class="number">10</span>          <span class="number">8</span></div></pre></td></tr></table></figure>
+<h2 id="vapply"><a href="#vapply" class="headerlink" title="vapply"></a>vapply</h2><p><code>vapply()</code> is a safer variant of <code>sapply()</code>, since it requires you to specify the format of the output in advance. In addition, <code>vapply()</code> may perform faster than <code>sapply()</code> for large datasets. In short, <code>vapply()</code> is safer and faster, and less convenient (when working interactively at the prompt).</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># If the returned format is not your request, you'll get an ERROR. </span></div><div class="line">&gt; vapply(flags, unique, numeric(<span class="number">1</span>))</div><div class="line">Error <span class="keyword">in</span> vapply(flags, unique, numeric(<span class="number">1</span>)) : values must be length <span class="number">1</span>,</div><div class="line"> but FUN(X[[<span class="number">1</span>]]) result is length <span class="number">194</span></div></pre></td></tr></table></figure>
+<h2 id="tapply"><a href="#tapply" class="headerlink" title="tapply"></a>tapply</h2><p><code>tapply()</code> allows to split data up into groups based on the value of some variable.<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># based on value of landmass (6 values), apply mean to each animate</span></div><div class="line">&gt; tapply(flags$animate, flags$landmass, mean)</div><div class="line">        <span class="number">1</span>         <span class="number">2</span>         <span class="number">3</span>         <span class="number">4</span>         <span class="number">5</span>         <span class="number">6</span> </div><div class="line"><span class="number">0.4193548</span> <span class="number">0.1764706</span> <span class="number">0.1142857</span> <span class="number">0.1346154</span> <span class="number">0.1538462</span> <span class="number">0.3000000</span> </div><div class="line"></div><div class="line"><span class="comment"># based on value of red (2 values), apply summary to each population</span></div><div class="line">&gt; tapply(flags$population, flags$red, summary)</div><div class="line">$`0`</div><div class="line">   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </div><div class="line">   <span class="number">0.00</span>    <span class="number">0.00</span>    <span class="number">3.00</span>   <span class="number">27.63</span>    <span class="number">9.00</span>  <span class="number">684.00</span> </div><div class="line">$`1`</div><div class="line">   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </div><div class="line">    <span class="number">0.0</span>     <span class="number">0.0</span>     <span class="number">4.0</span>    <span class="number">22.1</span>    <span class="number">15.0</span>  <span class="number">1008.0</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/R/" rel="tag"># R</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/github-let-github-site-be-searchable/" rel="next" title="如何让搜索引擎检索GitHub网站">
+                <i class="fa fa-chevron-left"></i> 如何让搜索引擎检索GitHub网站
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/r-programming-logic/" rel="prev" title="R programming - logic">
+                R programming - logic <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Pan" />
+          <p class="site-author-name" itemprop="name">Pan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/fanpancn/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-quora"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/fan-pan-7bab6128/" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-linkedin-square"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://cos.name/" title="统计之都" target="_blank">统计之都</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.r-bloggers.com/" title="R-Bloggers" target="_blank">R-Bloggers</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.coursera.org/" title="Coursera" target="_blank">Coursera</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://stackoverflow.com/documentation/r/topics" title="StackOverFlow" target="_blank">StackOverFlow</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.r-graph-gallery.com/" title="R Graph Gallery" target="_blank">R Graph Gallery</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://journal.r-project.org/" title="The R Journal" target="_blank">The R Journal</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://bbs.pinggu.org/" title="经管之家" target="_blank">经管之家</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.scm-blog.com/" title="刘宝红专栏" target="_blank">刘宝红专栏</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.photo.withqiuliang.com/" title="秋影随行" target="_blank">秋影随行</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zhihu.com/" title="知乎" target="_blank">知乎</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://itellyou.cn/" title="I Tell You" target="_blank">I Tell You</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io/icons/" title="FontAwesome" target="_blank">FontAwesome</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-matrix"><span class="nav-number">1.</span> <span class="nav-text">Create matrix</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#create-a-matrix-directly"><span class="nav-number">1.1.</span> <span class="nav-text">create a matrix directly</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-matrix-from-vector"><span class="nav-number">1.2.</span> <span class="nav-text">Create matrix from vector</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#see-the-attribute-of-matrix"><span class="nav-number">1.3.</span> <span class="nav-text">see the attribute of matrix</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-data-frame"><span class="nav-number">2.</span> <span class="nav-text">Create data frame</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Convert-matrix-to-data-frame"><span class="nav-number">2.1.</span> <span class="nav-text">Convert matrix to data frame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-row-column-name"><span class="nav-number">2.2.</span> <span class="nav-text">Add row/column name</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#browse-matrix-dataframe"><span class="nav-number">2.3.</span> <span class="nav-text">browse matrix/dataframe</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Loop-functions"><span class="nav-number">3.</span> <span class="nav-text">Loop functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lapply"><span class="nav-number">3.1.</span> <span class="nav-text">lapply</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sapply"><span class="nav-number">3.2.</span> <span class="nav-text">sapply</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vapply"><span class="nav-number">3.3.</span> <span class="nav-text">vapply</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tapply"><span class="nav-number">3.4.</span> <span class="nav-text">tapply</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pan</span>
+</div>
+
+
+<div class="powered-by">
+  Welcome to <a class="theme-link" href="http://panblog.cn">PanBlog</a>, a github blog of Pan :)
+</div>
+
+<div class="theme-info">
+<p>Hosted by <a href="https://pages.coding.me">Coding Pages</a> and <a href="https://pages.github.com/">GitHub Pages</a></p>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "8105c15858d04180af951ff99e01fdba",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
