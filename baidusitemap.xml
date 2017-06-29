@@ -5,6 +5,31 @@
     
     
   <url>
+    <loc>http://www.panblog.cn/2017/06/github-introduction-to-git/</loc>
+    <lastmod>2017-06-27T13:21:49.112Z</lastmod>
+    <data>
+        <display>
+        <title>简版GIT入门教程</title>
+        <pubTime>2017-06-13T13:51:14.000Z</pubTime>
+        
+        <tag>GitHub</tag>
+         
+        <tag>GIT</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programming" url="http://www.panblog.cn/categories/Programming/"/>
+          
+             
+              <breadCrumb title="GitHub" url="http://www.panblog.cn/categories/Programming/GitHub/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.panblog.cn/2017/05/r-programming-hints-of-swirl/</loc>
     <lastmod>2017-06-25T04:20:48.000Z</lastmod>
     <data>
@@ -168,31 +193,6 @@
           
              
               <breadCrumb title="价值观" url="http://www.panblog.cn/categories/%E6%9D%82%E8%B0%88/%E4%BB%B7%E5%80%BC%E8%A7%82/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.panblog.cn/2017/06/github-introduction-to-git/</loc>
-    <lastmod>2017-06-14T09:14:34.000Z</lastmod>
-    <data>
-        <display>
-        <title>简版GIT入门教程</title>
-        <pubTime>2017-06-13T13:51:14.000Z</pubTime>
-        
-        <tag>GitHub</tag>
-         
-        <tag>GIT</tag>
-         
-         
-           
-             
-              <breadCrumb title="Programming" url="http://www.panblog.cn/categories/Programming/"/>
-          
-             
-              <breadCrumb title="GitHub" url="http://www.panblog.cn/categories/Programming/GitHub/"/>
           
         </display>
     </data>
