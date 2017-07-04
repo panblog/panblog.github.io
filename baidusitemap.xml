@@ -3,6 +3,53 @@
 
 
     
+  <url>
+    <loc>http://www.panblog.cn/2017/06/poem-wuti-yiming/</loc>
+    <lastmod>2017-07-04T12:33:49.794Z</lastmod>
+    <data>
+        <display>
+        <title>����</title>
+        <pubTime>2017-06-30T12:32:35.000Z</pubTime>
+        
+        <tag>ʫ��</tag>
+         
+         
+           
+             
+              <breadCrumb title="���粨" url="http://www.panblog.cn/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%E7%B2%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.panblog.cn/2017/07/dam-roadmap-of-data-analysis/</loc>
+    <lastmod>2017-07-02T16:39:32.680Z</lastmod>
+    <data>
+        <display>
+        <title>数据分析最基本的问题</title>
+        <pubTime>2017-07-02T15:45:25.000Z</pubTime>
+        
+        <tag>Data analysis</tag>
+         
+        <tag>principle</tag>
+         
+        <tag>procedure</tag>
+         
+         
+           
+             
+              <breadCrumb title="Data Analysis" url="http://www.panblog.cn/categories/Data-Analysis/"/>
+          
+             
+              <breadCrumb title="Overview" url="http://www.panblog.cn/categories/Data-Analysis/Overview/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://www.panblog.cn/2017/06/github-introduction-to-git/</loc>
